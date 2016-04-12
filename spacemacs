@@ -36,6 +36,7 @@ values."
      latex
      org
      bibtex
+     org-download
      ranger
      python
      ;; (shell :variables
@@ -259,7 +260,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (setq-default dotspacemacs-themes '(monokai))
-
+  (setq-default dotspacemacs-configuration-layer-path '("~/.spacemacs.d/"))
 
   )
 
