@@ -1,7 +1,6 @@
 #+TITLE: org-download layer
 
 # The maximum height of the logo should be 200 pixels.
-[[img/org-download.png]]
 
 * Table of Contents                                        :TOC_4_gh:noexport:
  - [[#description][Description]]
@@ -9,8 +8,8 @@
  - [[#key-bindings][Key bindings]]
 
 * Description
-This layer does wonderful things:
-  - thing01
+This layer adds org-download support to spacemacs. It merely adds key bindings... See below.
+For further details about the org-download package, have a look at the [[https://github.com/abo-abo/org-download][readme]].
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
@@ -19,6 +18,7 @@ file.
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
+| Key Binding | Description             |
+|-------------+-------------------------|
+| ~SPC m i s~ | org-download-screenshot |
+| ~SPC m i y~ | org-download-yank       |
