@@ -270,6 +270,11 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
 
+  ;;org-download
+  (setq org-download-image-dir "pics")
+  (setq org-download-heading-lvl nil)
+
+  ;; org-ref defaults
   (setq org-ref-default-bibliography '("~/ownCloud/org/litteratureReview/refs.bib")
         org-ref-pdf-directory "~/ownCloud/resources/"
         )
@@ -300,8 +305,12 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(helm-external-programs-associations (quote (("pdf" . "evince"))))
  '(org-agenda-files (quote ("~/ownCloud/org/home.org")))
+ '(org-download-heading-lvl nil)
+ '(org-download-image-dir "pics")
+ '(org-download-method (quote directory))
  '(org-file-apps
    (quote
     ((auto-mode . emacs)
