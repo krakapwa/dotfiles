@@ -8,7 +8,7 @@
  - [[#key-bindings][Key bindings]]
 
 * Description
-This layer adds org-download support to spacemacs. It merely adds key bindings... See below.
+This layer adds org-download support to spacemacs. It allows to drag-and-drop images from your browser or file-system into an org file.
 For further details about the org-download package, have a look at the [[https://github.com/abo-abo/org-download][readme]].
 
 * Install

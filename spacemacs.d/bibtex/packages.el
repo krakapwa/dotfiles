@@ -1,7 +1,6 @@
-;;; packages-config.el --- BibTeX Layer packages file for Spacemacs
+;;; packages.el --- BibTeX Layer packages file for Spacemacs.
 ;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
 ;;
 ;; Author: Joshua Ellis <josh@jpellis.me>
 ;; URL: https://github.com/JP-Ellis
@@ -14,10 +13,20 @@
 
 ;;; Code:
 
+(defconst bibtex-packages
+      '(
+        auctex
+        helm
+        org
+        org-ref
+        markdown-mode
+        ))
+
 (defun bibtex/init-org-ref ()
   (use-package org-ref
     :defer t
     :config
+    :init
     (progn
       (spacemacs/set-leader-keys-for-major-mode 'bibtex-mode
         ;; Navigation
@@ -53,5 +62,4 @@
 (defun bibtex/post-init-markdown-mode ()
   (spacemacs/set-leader-keys-for-major-mode 'markdown-mode
     "ic" 'org-ref-helm-insert-cite-link))
-
-;;; packages.el ends here
+;;; packages-config.el ends here
