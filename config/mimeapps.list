@@ -1,0 +1,5 @@
+[Default Applications]
+application/x-lyx=userapp-lyx-DIY4FY.desktop
+
+[Added Associations]
+application/x-lyx=userapp-lyx-DIY4FY.desktop;
