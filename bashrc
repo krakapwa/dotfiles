@@ -115,3 +115,4 @@ fi
 alias pdfjoin="pdfjoin --rotateoversize false"
 export MATLAB_USE_USERWORK=1
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+export PATH="/home/krakapwa/bin/ml2015b/bin:/home/krakapwa/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
