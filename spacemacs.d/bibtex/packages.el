@@ -24,8 +24,8 @@
 
 (defun bibtex/init-org-ref ()
   (use-package org-ref
-    :defer t
-    :config
+    ;;:defer t
+    ;;:config
     :init
     (progn
       (spacemacs/set-leader-keys-for-major-mode 'bibtex-mode

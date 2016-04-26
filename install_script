@@ -32,7 +32,7 @@ done
 
 #setup spacemacs
 echo -n "Setting up spacemacs"
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
 
 
 install_zsh () {

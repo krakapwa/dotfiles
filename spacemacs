@@ -33,6 +33,7 @@ values."
      git
      ;; markdown
      themes-megapack
+     extra-langs
      latex
      org
      bibtex
@@ -55,7 +56,9 @@ values."
    dotspacemacs-additional-packages '(
     )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    smartparens
+    )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -260,8 +263,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   (setq-default dotspacemacs-themes '(monokai))
-  (setq-default dotspacemacs-configuration-layer-path '("~/.spacemacs.d/"))
-
+  ;;(setq-default dotspacemacs-configuration-layer-path '("~/.spacemacs.d/"))
   )
 
 (defun dotspacemacs/user-config ()
@@ -270,15 +272,10 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
 
-  ;;org-download
-  (setq org-download-image-dir "pics")
-  (setq org-download-heading-lvl nil)
-
   ;; org-ref defaults
   (setq org-ref-default-bibliography '("~/ownCloud/org/litteratureReview/refs.bib")
         org-ref-pdf-directory "~/ownCloud/resources/"
         )
-  (require 'org-ref)
 
   ;; Make linums relative by default
   (global-linum-mode nil)
@@ -307,10 +304,11 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(helm-external-programs-associations (quote (("pdf" . "evince"))))
- '(org-agenda-files (quote ("~/ownCloud/org/home.org")))
+ '(org-agenda-files
+   (quote
+    ("~/ownCloud/org/workAdmin.org" "~/ownCloud/org/home.org")))
  '(org-download-heading-lvl nil)
  '(org-download-image-dir "pics")
- '(org-download-method (quote directory))
  '(org-file-apps
    (quote
     ((auto-mode . emacs)
@@ -321,6 +319,7 @@ layers configuration. You are free to put any user code."
    (quote
     ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
  '(paradox-github-token t)
+ '(python-shell-interpreter "/usr/bin/ipython")
  '(ranger-preview-file nil)
  '(truncate-lines t))
 (custom-set-faces

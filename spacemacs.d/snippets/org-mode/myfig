@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: myfig
+# key: myfig_
+# --
+#+CAPTION: ${1:caption}
+#+ATTR_LaTeX: ${[h]{0.2\textwidth} :width 0.38\textwidth}
+#+LABEL: fig:${2:label}
