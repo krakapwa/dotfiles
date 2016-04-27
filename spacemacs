@@ -54,6 +54,7 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
+       openwith
     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
@@ -287,7 +288,11 @@ layers configuration. You are free to put any user code."
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4" "pdf"))
 
   (setq helm-external-programs-associations (quote (("pdf" . "evince"))))
-
+  (setq dired-guess-shell-alist-user
+        (list
+         (list "\\.pdf$" "evince");; fixed rule
+         ;; possibly more rules...
+         ))
   ;;Copy/Pasting
   (setq x-select-enable-primary t)
   (setq mouse-drag-copy-region t)
@@ -304,6 +309,7 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(helm-external-programs-associations (quote (("pdf" . "evince"))))
+ '(openwith-mode t)
  '(org-agenda-files
    (quote
     ("~/ownCloud/org/workAdmin.org" "~/ownCloud/org/home.org")))
@@ -314,8 +320,7 @@ layers configuration. You are free to put any user code."
     ((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "/usr/bin/evince %s"))))
- '(org-latex-pdf-process
+     ("\\.pdf\\'" . "/usr/bin/evince %s")))) '(org-latex-pdf-process
    (quote
     ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
  '(paradox-github-token t)
