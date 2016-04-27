@@ -1,0 +1,3 @@
+#ignore private ssh key
+ssh/known_hosts
+ssh/id_rsa

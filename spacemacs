@@ -278,6 +278,15 @@ layers configuration. You are free to put any user code."
         org-ref-pdf-directory "~/ownCloud/resources/"
         )
 
+  (org-add-link-type "thunderlink" 'org-thunderlink-open)
+
+  (defun org-thunderlink-open (path)
+  "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
+  ;(message-box path)
+  (start-process "myname" nil "/usr/bin/icedove" "-thunderlink" (concat "thunderlink:" path)))
+
+  (provide 'org-thunderlink)
+
   ;; Make linums relative by default
   (global-linum-mode nil)
   (linum-relative-toggle)
@@ -287,10 +296,10 @@ layers configuration. You are free to put any user code."
   (setq ranger-max-preview-size 4)
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4" "pdf"))
 
-  (setq helm-external-programs-associations (quote (("pdf" . "evince"))))
+  (setq helm-external-programs-associations (quote (("pdf" . "zathura"))))
   (setq dired-guess-shell-alist-user
         (list
-         (list "\\.pdf$" "evince");; fixed rule
+         (list "\\.pdf$" "zathura");; fixed rule
          ;; possibly more rules...
          ))
   ;;Copy/Pasting
@@ -298,6 +307,35 @@ layers configuration. You are free to put any user code."
   (setq mouse-drag-copy-region t)
 
   (global-visual-line-mode 1)
+
+
+    ;;(with-eval-after-load 'org
+      (setq org-deadline-warning-days 14)
+      (setq org-directory "~/ownCloud/org")
+
+      ;; catch invisible edits
+      (setq org-catch-invisible-edits t)
+
+      (setq org-agenda-files '("~/ownCloud/org/tasks.org"))
+      (setq org-icalendar-combined-agenda-file "~/ownCloud/cal.ics")
+      (setq org-icalendar-alarm-time 60)
+      (setq org-agenda-default-appointment-duration 60)
+      ;;(setq org-agenda-skip-scheduled-if-done t)
+
+      ;; don't clutter headings with clock entries
+      (setq org-log-into-drawer "LOGBOOK")
+      (setq org-clock-into-drawer 1)
+
+      ;; move the habit graph to the right more
+      (setq org-habit-graph-column 60)
+      ;; this hook saves an ics file once an org-buffer is saved
+      (defun my-icalendar-agenda-export()
+          (if (string= (file-name-extension (buffer-file-name)) "org")
+                                    (org-icalendar-combine-agenda-files))
+                    )
+      (add-hook 'after-save-hook 'my-icalendar-agenda-export)
+    ;;)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -308,11 +346,9 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
- '(helm-external-programs-associations (quote (("pdf" . "evince"))))
+ '(helm-external-programs-associations (quote (("pdf" . "zathura"))))
  '(openwith-mode t)
- '(org-agenda-files
-   (quote
-    ("~/ownCloud/org/workAdmin.org" "~/ownCloud/org/home.org")))
+ '(org-agenda-files nil)
  '(org-download-heading-lvl nil)
  '(org-download-image-dir "pics")
  '(org-file-apps
@@ -320,7 +356,8 @@ layers configuration. You are free to put any user code."
     ((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "/usr/bin/evince %s")))) '(org-latex-pdf-process
+     ("\\.pdf\\'" . "/usr/bin/zathura %s"))))
+ '(org-latex-pdf-process
    (quote
     ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
  '(paradox-github-token t)
