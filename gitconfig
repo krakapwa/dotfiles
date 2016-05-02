@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#	name = krakapwa
+#	email = olol85@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
