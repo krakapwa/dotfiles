@@ -39,6 +39,10 @@ if [ -f $sshprivdir/id_rsa ]; then
     ssh-add $sshdir/id_rsa
 fi
 
+echo "Installing CH-fr keyboard layout with caps/escape swap"
+sudo cp /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.old
+sudo ln -sf $dir/pc /usr/share/X11/xkb/symbols/pc 
+
 install_zsh () {
 # Test to see if zshell is installed.  If it is:
 if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
