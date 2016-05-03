@@ -1,0 +1,114 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 0.1.3
+#
+# If you edit this, do not forget to uncomment any lines that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h 
+# The XK_ is not needed. 
+#
+# List of modifier (on my keyboard): 
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+#
+# Another way to specifie a key is to use 'xev' and set the 
+# keycode with c:nnn or the modifier with m:nnn where nnn is 
+# the keycode or the state returned by xev 
+#
+# This file is created by xbindkey_config 
+# The structure is : 
+# # Remark 
+# "command" 
+# m:xxx + c:xxx 
+# Shift+... 
+
+
+
+
+#keystate_numlock = enable
+#keystate_scrolllock = enable
+#keystate_capslock = enable
+
+
+
+#internalMonitor
+"internalMonitor.sh"
+    m:0x0 + c:73
+    F7 
+
+"mate-terminal -e mc"
+   Mod2+Mod4 + y
+
+"xfce4-terminal -e ncmpcpp"
+   Mod2+Mod4 + u
+
+"iceweasel"
+   Mod2+Mod4 + i
+
+"thunderbird"
+   Mod2+Mod4 + m
+
+"amixer set Master 5%+"
+    m:0x40 + c:80
+    Mod4 + KP_Up 
+
+"amixer set Master 5%-"
+    m:0x40 + c:88
+    Mod4 + KP_Down 
+
+"mpc volume +5"
+    m:0x40 + c:80
+    Mod4 + KP_Up 
+
+"mpc volume -5"
+    m:0x40 + c:88
+    Mod4 + KP_Down 
+
+"mpc next"
+    m:0x40 + c:85
+    Mod4 + KP_Right 
+
+"mpc prev"
+    m:0x40 + c:83
+    Mod4 + KP_Left 
+
+"mpc toggle"
+    m:0x40 + c:84
+    Mod4 + KP_Begin 
+
+#terminal drop down
+"xfce4-terminal --drop-down"
+    m:0x10 + c:49
+    Mod2 + section 
+
+#Remark
+"mpc toggle"
+    m:0x50 + c:84
+    Mod2+Mod4 + KP_Begin 
+
+#Remark
+"mpc prev"
+    m:0x50 + c:83
+    Mod2+Mod4 + KP_Left 
+
+#Remark
+"mpc next"
+    m:0x50 + c:85
+    Mod2+Mod4 + KP_Right 
+
+#Remark
+"mpc volume +5"
+    m:0x50 + c:80
+    Mod2+Mod4 + KP_Up 
+
+#Remark
+"mpc volume -5"
+    m:0x50 + c:88
+    Mod2+Mod4 + KP_Down 
+
+#
+# End of xbindkeys configuration
