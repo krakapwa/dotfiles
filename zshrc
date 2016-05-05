@@ -53,7 +53,9 @@ plugins=(git)
 
 # User configuration
 
-  export PATH="/home/krakapwa/bin/ml2015b/bin:/home/krakapwa/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export PATH="/home/krakapwa/bin/ml2015b/bin:/home/krakapwa/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+export VIMPERATOR_RUNTIME="$HOME/.vimperator"
+export VIMPERATOR_INIT=":source $VIMPERATOR_RUNTIME/vimperatorrc"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
