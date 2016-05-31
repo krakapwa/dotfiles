@@ -36,9 +36,8 @@
 
 
 #internalMonitor
-"internalMonitor.sh"
-    m:0x0 + c:73
-    F7 
+"screenToggle.sh"
+   Mod2+Mod4 + s
 
 "mate-terminal -e mc"
    Mod2+Mod4 + y
