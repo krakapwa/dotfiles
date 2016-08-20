@@ -62,6 +62,9 @@ function inspect(what) {
 EOB
 
 "===[ Mappings ]========================================================
+" Increase number of lines to scroll
+noremap j 5j
+noremap k 5k
 
 " Scroll up/down 20 lines at a time shift+j,shift+k
 noremap <C-j> 20j
