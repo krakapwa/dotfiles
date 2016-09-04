@@ -11,9 +11,6 @@ values."
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
-   ;; If non-nil layers with lazy install support are lazy installed.
-   ;; (default nil)
-   dotspacemacs-enable-lazy-installation nil
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -26,40 +23,33 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     spacemacs-helm
+     ;; auto-completion
      ;; better-defaults
-     auto-completion
      emacs-lisp
      git
      ;; markdown
-     themes-megapack
+     auto-completion
+     org
+     python
      extra-langs
      latex
-     org
      bibtex
      org-download
      ranger
-     python
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
-     (auto-completion :disabled-for org git)
-
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(
-       openwith
-    )
+   dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(
-                                    smartparens
-    )
+   dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -101,7 +91,7 @@ values."
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
    ;; List of items to show in the startup buffer. If nil it is disabled.
-   ;; Possible values are: `recents' `bookmarks' `projects' `agenda' `todos'.
+   ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
    dotspacemacs-startup-lists '(recents projects)
    ;; Number of recent files to show in the startup buffer. Ignored if
@@ -124,7 +114,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -139,9 +129,6 @@ values."
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m)
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -149,11 +136,14 @@ values."
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
-   ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
-   ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
-   ;; (default nil)
-   dotspacemacs-ex-substitute-global nil
+   ;; (Not implemented) dotspacemacs-distinguish-gui-ret nil
+   ;; The command key used for Evil commands (ex-commands) and
+   ;; Emacs commands (M-x).
+   ;; By default the command key is `:' so ex-commands are executed like in Vim
+   ;; with `:' and Emacs commands are executed with `<leader> :'.
+   dotspacemacs-command-key ":"
+   ;; If non nil `Y' is remapped to `y$'. (default t)
+   dotspacemacs-remap-Y-to-y$ t
    ;; Name of the default layout (default "Default")
    dotspacemacs-default-layout-name "Default"
    ;; If non nil the default layout name is displayed in the mode-line.
@@ -183,7 +173,7 @@ values."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
-   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-enable-paste-micro-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -214,27 +204,19 @@ values."
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
-   ;; If non nil show the titles of transient states. (default t)
-   dotspacemacs-show-transient-state-title t
-   ;; If non nil show the color guide hint for transient state keys. (default t)
-   dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
    dotspacemacs-mode-line-unicode-symbols t
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
-   ;; scrolling overrides the default behavior of Emacs which recenters point
-   ;; when it reaches the top or bottom of the screen. (default t)
+   ;; scrolling overrides the default behavior of Emacs which recenters the
+   ;; point when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
-   ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
-   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -260,32 +242,62 @@ values."
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put almost
-any user code here.  The exception is org related code, which should be placed
-in `dotspacemacs/user-config'."
-  (setq-default dotspacemacs-themes '(monokai))
-  ;;(setq-default dotspacemacs-configuration-layer-path '("~/.spacemacs.d/"))
+It is called immediately after `dotspacemacs/init', before layer configuration
+executes.
+ This function is mostly useful for variables that need to be set
+before packages are loaded. If you are unsure, you should try in setting them in
+`dotspacemacs/user-config' first."
   )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
-
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
 
   ;; org-ref defaults
-  (setq org-ref-default-bibliography '("~/ownCloud/org/litteratureReview/refs.bib")
-        org-ref-pdf-directory "~/ownCloud/resources/"
+  (setq org-ref-default-bibliography '("~/otlShare/laurent.lejeune/org/litteratureReview/refs.bib")
+        org-ref-pdf-directory "~/otlShare/laurent.lejeune/resources/"
         )
 
-  (org-add-link-type "thunderlink" 'org-thunderlink-open)
+  ;; latex in org-mode
+  (unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+  (add-to-list 'org-export-latex-classes
+    ;; beamer class, for presentations
+    '("beamer"
+      "\\documentclass[11pt][smaller,presentation]{beamer}\n
+        \\mode<{{{beamermode}}}>\n
+        \\usetheme{{{{beamertheme}}}}\n
+        \\usecolortheme{{{{beamercolortheme}}}}\n
+        \\beamertemplateballitem\n
+        \\setbeameroption{show notes}
+        \\usepackage[utf8]{inputenc}\n
+        \\usepackage[T1]{fontenc}\n
+        \\usepackage{hyperref}\n
+        \\usepackage{color}
+        \\usepackage{amsmath}
+        \\usepackage{listings}
+        \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
+    frame=single,
+    basicstyle=\\small,
+    showspaces=false,showstringspaces=false,
+    showtabs=false,
+    keywordstyle=\\color{blue}\\bfseries,
+    commentstyle=\\color{red},
+    }\n
+        \\usepackage{verbatim}\n
+        \\institute{{{{beamerinstitute}}}}\n          
+        \\subject{{{{beamersubject}}}}\n"
 
-  (defun org-thunderlink-open (path)
-  "Opens a specified email in Thunderbird with the help of the add-on ThunderLink."
-  ;(message-box path)
-  (start-process "myname" nil "/usr/bin/icedove" "-thunderlink" (concat "thunderlink:" path)))
+      ("\\section{%s}" . "\\section*{%s}")
 
-  (provide 'org-thunderlink)
+      ("\\begin{frame}[fragile]\\frametitle{%s}"
+        "\\end{frame}"
+        "\\begin{frame}[fragile]\\frametitle{%s}"
+        "\\end{frame}")))
 
   ;; Make linums relative by default
   (global-linum-mode nil)
@@ -308,66 +320,29 @@ layers configuration. You are free to put any user code."
 
   (global-visual-line-mode 1)
 
+  '(magit-diff-use-overlays nil)
+  '(openwith-mode t)
+  '(org-agenda-files nil)
+  '(org-beamer-frame-level 2)
+  '(org-download-heading-lvl nil)
+  '(org-download-image-dir "pics")
+  '(org-export-backends (quote (ascii beamer html icalendar latex)))
+  '(org-file-apps
+    (quote
+     ((auto-mode . emacs)
+      ("\\.mm\\'" . default)
+      ("\\.x?html?\\'" . default)
+      ("\\.pdf\\'" . "/usr/bin/zathura %s"))))
+  '(org-latex-pdf-process
+    (quote
+     ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
 
-    ;;(with-eval-after-load 'org
-      (setq org-deadline-warning-days 14)
-      (setq org-directory "~/ownCloud/org")
-
-      ;; catch invisible edits
-      (setq org-catch-invisible-edits t)
-
-      (setq org-agenda-files '("~/ownCloud/org/tasks.org"))
-      (setq org-icalendar-combined-agenda-file "~/ownCloud/cal.ics")
-      (setq org-icalendar-alarm-time 60)
-      (setq org-agenda-default-appointment-duration 60)
-      ;;(setq org-agenda-skip-scheduled-if-done t)
-
-      ;; don't clutter headings with clock entries
-      (setq org-log-into-drawer "LOGBOOK")
-      (setq org-clock-into-drawer 1)
-
-      ;; move the habit graph to the right more
-      (setq org-habit-graph-column 60)
-      ;; this hook saves an ics file once an org-buffer is saved
-      (defun my-icalendar-agenda-export()
-          (if (string= (file-name-extension (buffer-file-name)) "org")
-                                    (org-icalendar-combine-agenda-files))
-                    )
-      (add-hook 'after-save-hook 'my-icalendar-agenda-export)
-    ;;)
-
+  (setq python-shell-interpreter "ipython"
+    python-shell-interpreter-args "--simple-prompt -i")
+ '(package-selected-packages
+   (quote
+    (powerline alert log4e gntp parent-mode projectile pkg-info epl request gitignore-mode flx smartparens iedit anzu highlight company yasnippet packed anaconda-mode pythonic f dash s helm avy helm-core async auto-complete popup package-build bind-key bind-map evil tango-2-theme ranger spinner orgit org-ref key-chord hydra ivy helm-bibtex biblio parsebib biblio-core magit-gitflow helm-flx evil-magit magit magit-popup git-commit with-editor company-quickhelp pos-tip auctex zonokai-theme zenburn-theme zen-and-art-theme ws-butler wolfram-mode window-numbering which-key volatile-highlights vi-tilde-fringe use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme stan-mode spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle seti-theme scad-mode reverse-theme restart-emacs rainbow-delimiters railscasts-theme quelpa qml-mode pyvenv python pytest pyenv-mode py-yapf purple-haze-theme professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme page-break-lines organic-green-theme org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets openwith open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme matlab-mode material-theme majapahit-theme macrostep lush-theme lorem-ipsum linum-relative light-soap-theme leuven-theme julia-mode jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-descbinds helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger gandalf-theme flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu espresso-theme elisp-slime-nav dracula-theme django-theme define-word darktooth-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme company-anaconda colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile arduino-mode apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-window ace-link ace-jump-helm-line ac-ispell)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(helm-external-programs-associations (quote (("pdf" . "zathura"))))
- '(openwith-mode t)
- '(org-agenda-files nil)
- '(org-download-heading-lvl nil)
- '(org-download-image-dir "pics")
- '(org-file-apps
-   (quote
-    ((auto-mode . emacs)
-     ("\\.mm\\'" . default)
-     ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "/usr/bin/zathura %s"))))
- '(org-latex-pdf-process
-   (quote
-    ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
- '(paradox-github-token t)
- '(python-shell-interpreter "/usr/bin/ipython")
- '(ranger-preview-file nil)
- '(truncate-lines t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))

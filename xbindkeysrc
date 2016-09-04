@@ -39,11 +39,13 @@
 "screenToggle.sh"
    Mod2+Mod4 + s
 
-"mate-terminal -e mc"
-   Mod2+Mod4 + y
+"xfce4-terminal"
+    m:0x50 + c:54
+    Mod2+Mod4 + c 
 
-"xfce4-terminal -e ncmpcpp"
-   Mod2+Mod4 + u
+"emacs"
+    m:0x50 + c:26
+    Mod2+Mod4 + e 
 
 "iceweasel"
    Mod2+Mod4 + i
