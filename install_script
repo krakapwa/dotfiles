@@ -48,8 +48,9 @@ if [ -f $sshprivdir/id_rsa ]; then
 fi
 
 echo "Installing CH-fr keyboard layout with caps/escape swap"
-sudo cp /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.old
-sudo ln -sf $dir/pc /usr/share/X11/xkb/symbols/pc 
+localectl set-x11-keymap ch pc105 fr caps:swapescape
+#sudo cp /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.old
+#sudo ln -sf $dir/pc /usr/share/X11/xkb/symbols/pc 
 
 echo "Installing pyenv"
 wget -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash

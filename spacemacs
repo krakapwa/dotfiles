@@ -278,6 +278,7 @@ you should place your code here."
         \\usepackage[T1]{fontenc}\n
         \\usepackage{hyperref}\n
         \\usepackage{color}
+        \\usepackage}{lmodern}
         \\usepackage{amsmath}
         \\usepackage{listings}
         \\lstset{numbers=none,language=[ISO]C++,tabsize=4,
