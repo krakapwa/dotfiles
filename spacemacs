@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     markdown
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -27,6 +28,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
+     themes-megapack
      ;; markdown
      auto-completion
      org
@@ -247,6 +249,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default dotspacemacs-themes '(monokai))
   )
 
 (defun dotspacemacs/user-config ()
@@ -261,6 +264,10 @@ you should place your code here."
   (setq org-ref-default-bibliography '("~/otlShare/laurent.lejeune/org/litteratureReview/refs.bib")
         org-ref-pdf-directory "~/otlShare/laurent.lejeune/resources/"
         )
+
+  (setq org-ref-open-pdf-function
+  (lambda (fpath)
+    (start-process "zathura" "*helm-bibtex-zathura*" "/usr/bin/zathura" fpath)))
 
   ;; latex in org-mode
   (unless (boundp 'org-export-latex-classes)
@@ -338,7 +345,7 @@ you should place your code here."
     (quote
      ("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")))
 
-  (setq python-shell-interpreter "ipython"
+  (setq python-shell-interpreter "ipython3"
     python-shell-interpreter-args "--simple-prompt -i")
  '(package-selected-packages
    (quote
