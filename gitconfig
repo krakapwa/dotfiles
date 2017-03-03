@@ -10,3 +10,6 @@
 	st = status
     unstage = reset HEAD --
 	last = log -1 HEAD
+[user]
+	email = olol85@gmail.com
+	name = olol85
