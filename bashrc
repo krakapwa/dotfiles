@@ -117,3 +117,5 @@ export MATLAB_USE_USERWORK=1
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
 #export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$HOME/Downloads/emacs-24.5/src:$HOME/bin/robomongo/bin"
+export MPD_HOST="raspberrypi.local"
+export EDITOR="/usr/bin/vim"
