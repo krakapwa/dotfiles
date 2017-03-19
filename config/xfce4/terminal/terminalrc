@@ -18,4 +18,13 @@ MiscHighlightUrls=TRUE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=0.870000
 MiscScrollAlternateScreen=TRUE
+FontName=Source Code Pro Medium 10
+MiscBellUrgent=FALSE
+MiscMouseWheelZoom=TRUE
+MiscMiddleClickOpensUri=FALSE
+MiscCopyOnSelect=FALSE
+MiscDefaultWorkingDir=
+MiscRewrapOnResize=TRUE
+MiscUseShiftArrowsToScroll=FALSE
+MiscSlimTabs=FALSE
 

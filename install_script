@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="xbindkeysrc vimperatorrc ipython bashrc zshrc vimrc vim zshrc spacemacs spacemacs.d config ssh xfce4 gitconfig"    # list of files/folders to symlink in homedir
+files="fonts xbindkeysrc vimperatorrc ipython bashrc zshrc vimrc vim zshrc spacemacs spacemacs.d config ssh xfce4 gitconfig conky"    # list of files/folders to symlink in homedir
 sshprivdir=~/.ssh_priv
 sshdir=~/.ssh
 binscripts="screenToggle.sh"
@@ -46,11 +46,6 @@ if [ -f $sshprivdir/id_rsa ]; then
     ln -s $sshprivdir/id_rsa $sshdir/id_rsa
     ssh-add $sshdir/id_rsa
 fi
-
-echo "Installing CH-fr keyboard layout with caps/escape swap"
-localectl set-x11-keymap ch pc105 fr caps:swapescape
-#sudo cp /usr/share/X11/xkb/symbols/pc /usr/share/X11/xkb/symbols/pc.old
-#sudo ln -sf $dir/pc /usr/share/X11/xkb/symbols/pc 
 
 echo "Installing pyenv"
 wget -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
