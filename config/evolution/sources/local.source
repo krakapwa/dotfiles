@@ -1,0 +1,16 @@
+# Special built-in mail store.
+
+[Data Source]
+DisplayName=On This Computer
+Enabled=false
+Parent=
+
+[Mail Account]
+BackendName=maildir
+IdentityUid=self
+ArchiveFolder=
+NeedsInitialSetup=false
+
+[Maildir Backend]
+FilterInbox=true
+Path=/home/krakapwa/.local/share/evolution/mail/local
