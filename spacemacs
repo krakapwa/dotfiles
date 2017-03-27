@@ -262,7 +262,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;;evil remap tab to end of line
-  (define-key evil-normal-state-map [tab] 'evil-end-of-line)
+  ;;(define-key evil-normal-state-map [tab] 'evil-end-of-line)
 
   ;; org-ref defaults
   (setq org-ref-default-bibliography '("~/Documents/refs.bib"))
