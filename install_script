@@ -9,8 +9,8 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 #list of files/folders to symlink in homedir
-files="fonts xbindkeysrc vimperatorrc ipython bashrc zshrc vimrc vimrc.local \
-zshrc spacemacs spacemacs.d config ssh xfce4 gitconfig conky bashrc.after"
+files="fonts xbindkeysrc vimperatorrc ipython bashrc vimrc.local \
+spacemacs spacemacs.d config ssh xfce4 gitconfig conky bashrc.after"
 sshprivdir=~/.ssh_priv
 sshdir=~/.ssh
 binscripts="screenToggle.sh"
@@ -60,8 +60,13 @@ git submodule init
 git submodule update
 
 cd ..
+echo "Cloning spacemacs"
+[ -f ~/emacs.d ] && git clone https://github.com/syl20bnr/spacemacs.git emacs.d
+[ -f ~/emacs.d ] && ln -s $HOME/dotfiles/emacs.d $HOME/.emacs.d
+
 echo "Cloning spf13-vim"
 cd spf13-vim
 git submodule init
 git submodule update
 source bootstrap.sh
+
