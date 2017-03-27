@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Path to the bash it configuration
-export BASH_IT="/home/froggy/dotfiles/bash-it"
+export BASH_IT="/home/krakapwa/dotfiles/bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -41,3 +41,6 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source /home/krakapwa/.bashrc.after
