@@ -1,63 +1,12 @@
 #!/bin/bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
-
-########## Variables
-
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-#list of files/folders to symlink in homedir
-files="fonts xbindkeysrc vimperatorrc ipython bashrc vimrc.local \
-spacemacs spacemacs.d config ssh xfce4 gitconfig conky bashrc.after"
-sshprivdir=~/.ssh_priv
-sshdir=~/.ssh
-binscripts="screenToggle.sh"
-bindir=~/bin
-
-##########
-
-# create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
-
-# change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
-cd $dir
-echo "done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, 
-#then create symlinks from the homedir to any files 
-#in the ~/dotfiles directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
-done
-
-# link binscripts to ~/bin/
-echo "Creating symlink of bin scripts to ~/bin/"
-for binscript in $binscripts; do
-    ln -s $dir/$binscript $bindir/$binscript
-done
-
-# Link ssh private key if it exists
-echo "Link private ssh key and add to keyring"
-if [ -f $sshprivdir/id_rsa ]; then
-    ln -s $sshprivdir/id_rsa $sshdir/id_rsa
-    ssh-add $sshdir/id_rsa
-fi
 
 echo "Installing pyenv"
 wget -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
 echo "Cloning bash-it"
-#cd bash-it
-#git submodule init
-#git submodule update
+cd bash-it
+git submodule init
+git submodule update
 
 cd ..
 echo "Cloning spacemacs"

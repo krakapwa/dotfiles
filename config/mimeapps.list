@@ -4,3 +4,4 @@ application/x-lyx=userapp-lyx-DIY4FY.desktop
 [Added Associations]
 application/x-lyx=userapp-lyx-DIY4FY.desktop;
 application/pdf=evince.desktop;
+text/plain=gvim.desktop;
