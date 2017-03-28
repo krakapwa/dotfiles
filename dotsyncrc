@@ -26,7 +26,6 @@ vimrc.local
 spacemacs
 spacemacs.d
 config
-ssh
 gitconfig
 conky
 bashrc.after
