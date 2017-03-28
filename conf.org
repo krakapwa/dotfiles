@@ -1,0 +1,177 @@
+* Org-mode
+** Cheat sheet: http://orgmode.org/orgcard.txt
+** Insert easy templates:  http://orgmode.org/manual/Easy-templates.html#Easy-templates
+
+
+*** Type a '<' followed by a template selector and <TAB>
+**** l 	#+BEGIN_LaTeX ... #+END_LaTeX 
+**** s 	#+BEGIN_SRC <language> <switches> <header arguments>
+Where language is one of [[http://orgmode.org/manual/Languages.html#Languages][those]].
+**** e 	#+BEGIN_EXAMPLE ... #+END_EXAMPLE
+**** q 	#+BEGIN_QUOTE ... #+END_QUOTE
+*** #+NAME: <name> gives a name to the code block
+** org-latex-pdf-process
+("pdflatex -interaction nonstopmode -output-directory %o %f" "bibtex %b" "pdflatex -interaction nonstopmode -output-directory %o %f" "pdflatex -interaction nonstopmode -output-directory %o %f")
+** Open PDF in custom app
+customize-variable -> org-file-apps 
+** C-c *
+    Turn a plain list item into a headline (so that it becomes a subheading at its location). See Structure editing, for a detailed explanation. 
+** yasnippets keys:
+***  ltxflt_ : insert image in float
+** Structure editing
+*** M-<RET>: org-insert-heading
+ Insert a new heading/item with the same level as the one at point. 
+*** C-<RET>: org-insert-heading-respect-content
+Just like M-<RET>, except when adding a new heading below the current heading, the new heading is placed after the body instead of before it.
+** Toggle inline images: <SPC> m i i
+* AUCTeX
+** http://piotrkazmierczak.com/2010/emacs-as-the-ultimate-latex-editor/
+*** automatic formatting of a section: C-c C-q C-s;
+*** section preview: C-c C-p C-s; 
+ltxflt
+* Vim
+** C-y / C-e: scroll with fixed cursor
+** f/F <char>: go to first occurence of <char> forward/backward on line
+** t/T <char>: go until first occurence of <char> (forward/backward) on line
+** J (capital J): Join lines
+** q<char>: Record macro in register q
+** @<char>: Execute macro
+** Text objects
+*** ci{w,',",(,[}: change everything inside matching parents. W is for 'word'
+*** di{w,',",(,[}: delete everything inside matching parents. W is for 'word'
+*** ca{w,',",(,[}: change everything around matching parents. W is for 'word'
+*** da{w,',",(,[}: delete everything around matching parents. W is for 'word'
+** Search and replace
+*** :%s/<search>/<replace>/g
+*** Can replace separation forward slash with : (easier for paths)
+** Change multiple lines into 1 line:
+Select lines to merge using <SHIFT>v. Merge with <SHIFT>j
+** Yank to register 'a' and paste
+*** Yank: "ay, "ayy, etc..
+*** Paste: "ap
+Everything that's yanked is written in the 'yank register', 0, i.e.
+*** Paste: "0p
+* Vimperator
+** <num>gt: Go to tab
+* Spacemacs
+** <SPC> s c: Clear search highlight
+** Toggle truncate line: <SPC> t l
+** Ranger
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/+tools/ranger][manual]]
+*** Delete file: D
+*** New directory: 
+**** Open Shell: ":"
+**** Make directory: "mkdir"
+*** New directory 2: 
+**** ; + in ranger
+** Git token:  8d815c9b034927cd9899f0ba794dc9bd8da16529
+** Python
+*** import <module> as <prefix> to get anaconda mode to work
+* Debian
+
+** Trackpoint scroll 
+https://wiki.archlinux.org/index.php/TrackPoint
+To enable scrolling with the TrackPoint while holding down the middle mouse button, create /etc/X11/xorg.conf.d/20-thinkpad.conf, replacing TPPS/2 IBM TrackPoint with the device name from xinput:
+
+#+BEGIN_SRC /etc/X11/xorg.conf.d/20-thinkpad.conf
+Section "InputClass"
+    Identifier	"Trackpoint Wheel Emulation"
+    MatchProduct	"TPPS/2 IBM TrackPoint"
+    MatchDevicePath	"/dev/input/event*"
+    Option		"EmulateWheel"		"true"
+    Option		"EmulateWheelButton"	"2"
+    Option		"Emulate3Buttons"	"false"
+    Option		"XAxisMapping"		"6 7"
+    Option		"YAxisMapping"		"4 5"
+EndSection
+#+END_SRC
+* Yasnippet
+** Reload snippets with ~yas-reload-all~
+** Insert key followed by M-/ to expand, or <SPC> i s
+* Zathura
+** c: Recolor
+** TAB: Show index
+** a/s: best-fit/width mode
+** f: fullscreen
+** p: print
+* Git
+** git checkout -b newbranch
+Create newbranch and switch to it. 
+** git log --oneline --decorate --graph --all
+Show commit logs with pretty graph.
+* Avy
+** SPC SPC <char>
+Highlight words starting with <char> and display keys in a "tree-like" structure.
+* Magit/Spacemacs
+** Inside a status buffer
+*** b b: Checkout a branch
+*** b c: Create a branch
+* Eyetracker
+** git clone git@130.92.124.83:laurent.lejeune/eyetracker.git
+** git submodule update --init --recursive
+Clones the official eyetribe API
+** Compiling on windows_x86
+Tested on virtual machine running in Virtual Box 5.0.20 on Linux(Debian)
+*** Download boost library: http://www.boost.org/
+*** Download boost jam 
+It's a build system
+http://www.boost.org/users/download/boost_jam_3_1_18.html
+*** Bootstrap and compile
+#+BEGIN_SRC bash
+C:\boost_1_52_0> bootstrap.bat mingw 
+Building Boost.Build engine 
+...
+C:\boost_1_52_0> b2 --without-python toolset=gcc address-model=32 install
+#+END_SRC
+*** Install openCV
+*** Download and install cmake for windows
+https://cmake.org/download/
+*** Download and install qt opensource bundled with mingw492
+http://download.qt.io/official_releases/qt/5.6/5.6.0/qt-opensource-windows-x86-mingw492-5.6.0.exe.mirrorlist
+*** Set paths to libraries in CMakeLists.txt
+SET("OpenCV_DIR" "c:/dev/opencv/build)
+*** Build application
+**** Option 1: Using mingw32-make.exe
+Fails to link dynamic libraries of Qt5.
+**** Option 2: Import cmake project in QtCreator
+Provide path to cmake executable in import wizard
+* iMac IP:
+
+networksetup -setmanual ethernet 130.92.124.10 255.255.255.0 130.92.124.1
+networksetup -setdnsservers ethernet 130.92.9.52
+** IP: 130.92.124.xx
+** subnet: 255.255.255.0
+** Gateway: 130.92.124.1
+** DNS: 130.92.9.52
+* Thinkpad trackpoint udev rule
+99-trackpoint.rules
+#+BEGIN_SRC
+ACTION=="add", SUBSYSTEM=="input", ATTR{name}=="TPPS/2 IBM TrackPoint", ATTR{device/sensitivity}="200", ATTR{device/press_to_select}="1"
+#+END_SRC
+* Bash-it + Lightdm
+Edit the /etc/lightdm/Xsession interpreter line to:
+
+#!/bin/bash
+* Boost/Python/Numpy
+./bootstrap.sh --with-python=/usr/local/bin/python3 --with-python-version=3.4 --with-python-root=/usr/local/lib/python3.4
+
+./b2
+
+sudo ./b2 install
+* dotsync/dotfiles
+~/.dotfiles/dotsync/bin/dotsync -L
+* Compile opencv with modules
+git clone https://github.com/opencv/opencv_contrib.git
+git clone https://github.com/opencv/opencv.git
+
+cmake -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/ -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=OFF -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)") -DPYTHON_EXECUTABLE=$(which python3) -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") .. 
+
+make -j 4
+
+sudo make install
+* Thunderbird
+* pyenv, matplotlib
+pyenv activate my-3.5
+pip install pyqt5
+In matplotlibrc:
+backend : Qt5Agg
