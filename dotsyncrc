@@ -25,8 +25,6 @@ ipython
 vimrc.local
 spacemacs
 config
-ssh
-xfce4
 gitconfig
 conky
 bashrc.after
