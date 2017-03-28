@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Path to the bash it configuration
-export BASH_IT="/home/krakapwa/.dotfiles/bash-it"
+export BASH_IT="/home/laurent.lejeune/.dotfiles/bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='powerline'
+export BASH_IT_THEME='minimal'
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
@@ -41,6 +41,3 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source /home/krakapwa/.bashrc.after
