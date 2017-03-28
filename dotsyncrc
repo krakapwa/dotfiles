@@ -22,13 +22,11 @@ fonts
 xbindkeysrc
 vimperatorrc
 ipython
-bashrc
 vimrc.local
 spacemacs
 spacemacs.d
 config
 ssh
-xfce4
 gitconfig
 conky
 bashrc.after
@@ -36,7 +34,7 @@ bashrc.after
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-krakapwa-pc git=ANY files=xfce4,bashrc:.linkto
+krakapwa-pc git=ANY files=xfce4:.linkto
 LaurentContainerNew git=ANY
 #host1.example.com               git=ANY                        files=custom/dotfile    #git repo, pull from anywhere and link a custom dotfile
 #host2.example.com               git=ANY                                                #git repo, pull from anywhere
