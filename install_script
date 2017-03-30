@@ -7,6 +7,8 @@ echo "Cloning bash-it"
 cd bash-it
 git submodule init
 git submodule update
+source install.sh
+bash-it enable git
 
 cd ..
 echo "Cloning spacemacs"
@@ -17,5 +19,13 @@ echo "Cloning spf13-vim"
 cd spf13-vim
 git submodule init
 git submodule update
-source bootstrap.sh
+read -p "Install spf13-vim? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    source bootstrap.sh
+fi
 
+cd ..
+echo "Linking"
+sh $PWD/dotsync/bin/dotsync -L
