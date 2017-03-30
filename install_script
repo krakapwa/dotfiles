@@ -7,7 +7,7 @@ echo "Cloning bash-it"
 cd bash-it
 git submodule init
 git submodule update
-source install.sh
+source install.sh --no-modify-config
 bash-it enable git
 
 cd ..
@@ -28,4 +28,4 @@ fi
 
 cd ..
 echo "Linking"
-sh $PWD/dotsync/bin/dotsync -L
+bash $PWD/dotsync/bin/dotsync -L

@@ -169,7 +169,17 @@ cmake -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/ -DBUILD_TIFF=ON
 make -j 4
 
 sudo make install
-* Thunderbird
+* Thunderbird/Lightning calendar
+** Mail
+  Install Exquilla add-on microsoft exchange 
+Server: https://mail.campus.unibe.ch/ews/exchange.asmx
+User: lejeune
+DOMAIN: CAMPUS
+** Calendar
+Install lightning add-on and exchange plugin https://github.com/Ericsson/exchangecalendar
+Server: https://mail.campus.unibe.ch/ews/exchange.asmx
+User: lejeune
+DOMAIN: CAMPUS
 * pyenv, matplotlib
 pyenv activate my-3.5
 pip install pyqt5

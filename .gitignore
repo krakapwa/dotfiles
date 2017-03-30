@@ -1,6 +1,6 @@
 #ignore private ssh key
-ssh/known_hosts
-ssh/id_rsa
+bashrc
+ssh
 emacs.d
 config/Thunar
 config/dconf
