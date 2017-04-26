@@ -18,7 +18,6 @@
 
 [files]
 dotsyncrc
-fonts
 xbindkeysrc
 vimperatorrc
 ipython
@@ -27,6 +26,7 @@ spacemacs
 config
 gitconfig
 conky
+xinitrc
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
@@ -34,5 +34,6 @@ conky
 krakapwa-pc                     git=ANY files=xfce4,bashrc.krakapwa:.bashrc
 lawl                            git=ANY files=bashrc.froggy:.bashrc
 LaurentContainerNew              git=ANY files=bashrc.x2:.bashrc,bash_profile.x2:.bash_profile
+raspberrypi              git=ANY files=bashrc.rpi:.bashrc
 [endhosts]
 

@@ -8,7 +8,6 @@ cd bash-it
 git submodule init
 git submodule update
 source install.sh --no-modify-config
-bash-it enable git
 
 cd ..
 echo "Cloning spacemacs"
@@ -27,5 +26,17 @@ then
 fi
 
 cd ..
+echo "Cloning fonts"
+git clone https://github.com/powerline/fonts.git
+cd fonts
+mkdir -p ~/.fonts
+echo "Copying fonts to ~/.fonts"
+find $PWD -name '*.[o,t]tf' -exec cp '{}' $HOME/.fonts/ \;
+fc-cache -f $HOME/.fonts
+cd ..
+
 echo "Linking"
 bash $PWD/dotsync/bin/dotsync -L
+
+source ~/.bashrc
+bash-it enable git
