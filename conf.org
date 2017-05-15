@@ -60,10 +60,13 @@ Everything that's yanked is written in the 'yank register', 0, i.e.
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/+tools/ranger][manual]]
 *** Delete file: D
 *** New directory: 
-**** Open Shell: ":"
+**** go to Shell at current dir
+go to: S, back to ranger <C>-D
+
 **** Make directory: "mkdir"
 *** New directory 2: 
-**** ; + in ranger
+**** ; + in ranger/spacemacs
+
 ** Git token:  8d815c9b034927cd9899f0ba794dc9bd8da16529
 ** Python
 *** import <module> as <prefix> to get anaconda mode to work
@@ -148,8 +151,11 @@ networksetup -setdnsservers ethernet 130.92.9.52
 #+BEGIN_SRC
 ACTION=="add", SUBSYSTEM=="input", ATTR{name}=="TPPS/2 IBM TrackPoint", ATTR{device/sensitivity}="200", ATTR{device/press_to_select}="1"
 #+END_SRC
-* Bash-it + Lightdm
+* Bash-it
+** Lightdm
 Edit the /etc/lightdm/Xsession interpreter line to:
+** Powerline
+https://ubuntu-mate.community/t/installing-powerline-as-quickly-as-possible/5381
 
 #!/bin/bash
 * Boost/Python/Numpy
