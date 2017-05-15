@@ -4,9 +4,6 @@
 [submodule "spf13-vim"]
 	path = spf13-vim
 	url = https://github.com/spf13/spf13-vim.git
-[submodule "emacs.d"]
-	path = emacs.d
-	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "dotsync"]
 	path = dotsync
 	url = git@github.com:dotphiles/dotsync.git
