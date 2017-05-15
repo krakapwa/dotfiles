@@ -3,9 +3,6 @@
 #
 # Config for dotsync
 #
-# Authors:
-#   Ben O'Hara <bohara@gmail.com>
-#
 
 # Location of your dotfiles in $HOME
 # DOTFILES=.dotfiles
@@ -27,6 +24,7 @@ config
 gitconfig
 conky
 xinitrc
+emacs.d
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink

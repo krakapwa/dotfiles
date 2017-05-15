@@ -43,3 +43,7 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 export EDITOR="/usr/bin/vim"
 
+export PATH="/home/krakapwa/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+

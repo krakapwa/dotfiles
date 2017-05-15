@@ -18,3 +18,10 @@ config/enchant
 config/gtk-2.0
 pyenv-installer*
 config/pavucontrol.ini
+emacs.d/*
+!emacs.d/init.el
+!emacs.d/python.el
+!emacs.d/tex.el
+!emacs.d/README.org
+!emacs.d/LICENSE.txt
+!emacs.d/themes
