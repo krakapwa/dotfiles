@@ -30,7 +30,7 @@ emacs.d
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 krakapwa-pc                     git=ANY files=xfce4,bashrc.krakapwa:.bashrc
-lawl                            git=ANY files=bashrc.froggy:.bashrc
+lawl                            git=ANY files=bashrc.froggy:.bashrc,bash_profile.froggy:.bash_profile
 LaurentContainerNew              git=ANY files=bashrc.x2:.bashrc,bash_profile.x2:.bash_profile
 raspberrypi              git=ANY files=bashrc.rpi:.bashrc
 [endhosts]

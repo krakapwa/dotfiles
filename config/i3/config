@@ -2,7 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
+set $mod Mod4
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -114,13 +114,14 @@ bindsym $mod+a focus parent
 # Workspace names
 set $ws1 "1: Terms "
 set $ws2 "2: Web "
-set $ws3 "3: X2go"
+#set $ws3 "3: X2go"
 # set $ws3 4:
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
+#bindsym $mod+3 workspace $ws3
+bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -134,7 +135,7 @@ bindsym $mod+Ctrl+Left workspace prev
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+3 move container to workspace number 3
 bindsym $mod+Ctrl+4 move container to workspace number 4
 bindsym $mod+Ctrl+5 move container to workspace number 5
 bindsym $mod+Ctrl+6 move container to workspace number 6
