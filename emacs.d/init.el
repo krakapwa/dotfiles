@@ -66,6 +66,11 @@
          (not ( equal bread-crumb (buffer-name) )) )
       (previous-buffer))))
 
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 ;; packages used in init
 (use-package dash)
@@ -228,11 +233,14 @@
   :config
 (spaceline-spacemacs-theme))
 
-(use-package ranger :ensure t
+(use-package ranger
+  :ensure t
+  :defer t
   :commands (ranger)
   :config
   (require 'cl-lib)
   (setq ranger-cleanup-eagerly t)
+  (setq ranger-show-hidden nil)
   )
 
 ;(setq color-themes '())
@@ -623,11 +631,6 @@
 
 
 
-(defun switch-to-previous-buffer ()
-  "Switch to previously open buffer.
-Repeated invocations toggle between the two most recently open buffers."
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 
 (define-key helm-map (kbd "C-j") 'helm-next-line)
