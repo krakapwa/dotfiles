@@ -617,6 +617,7 @@ Repeated invocations toggle between the two most recently open buffers."
                             ("models" "\\models" nil "&#8872;" "" "" "⊧"))
         org-export-backends '(html beamer ascii latex md)))
 
+
 (set-face-attribute 'default nil :font "Source code pro-11" )
 ;(set-frame-font FONT nil t)
 
@@ -675,6 +676,11 @@ Repeated invocations toggle between the two most recently open buffers."
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+
+
+(global-hl-line-mode +1)
+(blink-cursor-mode 0)
+(set-cursor-color "#ffff00")
 
 ;;; provide init package
 (provide 'init)

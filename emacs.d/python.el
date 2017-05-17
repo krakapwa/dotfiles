@@ -1,5 +1,6 @@
-;;; Python --- Mine
 ;;; Commentary:
+
+;;; Code:
 
 ; Highlight the call to pdb
 (defun annotate-pdb ()
@@ -19,11 +20,28 @@
   (delete 'elpy-module-highlight-indentation elpy-modules)
   (delete 'elpy-module-flymake elpy-modules)
 
+  ;(defun smart-open-line-above ()
+  ;"Insert an empty line above the current line.
+  ;  Position the cursor at it's beginning, according to the current mode."
+  ;  (interactive)
+  ;  (move-beginning-of-line nil)
+  ;  (newline-and-indent)
+  ;  (forward-line -1)
+  ;  (indent-according-to-mode))
+
+
   (defun python-add-breakpoint ()
     "Add a break point"
+    ;(interactive)
+    ;(beginning-of-line)
+    ;(indent-according-to-mode)
     (interactive)
-    (move-beginning-of-line 1)
-    ;(newline-and-indent)
+    (move-beginning-of-line nil)
+    (newline-and-indent)
+    (forward-line -1)
+    (indent-according-to-mode)
+
+    ;(smart-open-line-above)
     (insert "import pdb; pdb.set_trace()\n")
     (highlight-lines-matching-regexp "^[ ]*import pdb; pdb.set_trace()"))
 
@@ -43,7 +61,7 @@
     (let ((if-main-regex "^if +__name__ +== +[\"']__main__[\"'] *:")
           (has-if-main nil))
       (if (region-active-p)
-          (let ((region (elpy--region-without-indentation
+          (let ((region (elpy-region-without-indentation
                         (region-beginning) (region-end))))
             (setq has-if-main (string-match if-main-regex region))
             (python-shell-send-string region))
@@ -91,7 +109,7 @@
               '(add-to-list 'company-backends '(company-anaconda :with company-capf)))))
 
 (use-package window-purpose)
-;(purpose-mode)
+(purpose-mode)
 (add-to-list 'purpose-user-mode-purposes '(python-mode . py))
 (add-to-list 'purpose-user-mode-purposes '(inferior-python-mode . py-repl))
 (purpose-compile-user-configuration)
@@ -105,11 +123,20 @@
     :prefix "SPC"
     :which-key "Python"
     "mv" 'pyenv-mode-set
-    "mb" 'my-elpy-shell-send-region-or-buffer
+    ;"mb" 'my-elpy-shell-send-region-or-buffer
+    "mb" 'elpy-shell-send-region-or-buffer
     "md" 'python-add-breakpoint
     "mg" 'anaconda-mode-find-assignments
     "mf" 'elpy-yapf-fix-code
     "mi" 'run-python))
 
+(general-define-key :states '(normal insert emacs)
+                    :major-mode 'inferior-python-mode
+                    :keymaps 'inferior-python-mode-map
+                    "C-r" 'comint-history-isearch-backward
+                    "C-k" 'comint-previous-input
+                    "C-j" 'comint-next-input)
+
 (setq python-shell-interpreter "ipython"
     python-shell-interpreter-args "--simple-prompt -i")
+(setq python-shell-completion-native-enable nil)
