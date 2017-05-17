@@ -90,8 +90,8 @@
             (eval-after-load "company"
               '(add-to-list 'company-backends '(company-anaconda :with company-capf)))))
 
-(require 'window-purpose)
-(purpose-mode)
+(use-package window-purpose)
+;(purpose-mode)
 (add-to-list 'purpose-user-mode-purposes '(python-mode . py))
 (add-to-list 'purpose-user-mode-purposes '(inferior-python-mode . py-repl))
 (purpose-compile-user-configuration)
