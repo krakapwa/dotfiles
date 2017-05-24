@@ -191,3 +191,11 @@ pyenv activate my-3.5
 pip install pyqt5
 In matplotlibrc:
 backend : Qt5Agg
+* Imagemagick batch operations
+** Crop
+   mogrify -crop x_size+y_size+x_left_top+y_left_top *.png
+** Upsample
+convert *.png -resize 200% *.png
+* VPNC 
+sudo cp <vpn_profile>.conf /etc/vpnc
+sudo vpnc <vpn_profile>
