@@ -8,5 +8,5 @@ if [ ! -e $TOGGLE ]; then
     $HOME/.screenlayout/single.sh
 else
     rm $TOGGLE
-    $HOME/.screenlayout/artorg.sh
+    $HOME/.screenlayout/t430.sh
 fi

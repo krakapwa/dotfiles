@@ -191,3 +191,11 @@ pyenv activate my-3.5
 pip install pyqt5
 In matplotlibrc:
 backend : Qt5Agg
+* Bluetooth keyboard
+** Pairing/Trusting
+Type pairkey on keyboard and press enter.
+Trust device so that it reconnects automatically.
+** /etc/bluetooth/main.conf
+FastConnectable=true
+AutoEnable=true
+
