@@ -3,10 +3,16 @@
 
 TOGGLE=$HOME/bin/.toggle
 
-if [ ! -e $TOGGLE ]; then
-    touch $TOGGLE
-    $HOME/.screenlayout/single.sh
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    if [ ! -e $TOGGLE ]; then
+        touch $TOGGLE
+        $HOME/.screenlayout/single.sh
+    else
+        rm $TOGGLE
+        $HOME/.screenlayout/t430.sh
+    fi
 else
-    rm $TOGGLE
-    $HOME/.screenlayout/t430.sh
+    $HOME/.screenlayout/single.sh
 fi
