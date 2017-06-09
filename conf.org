@@ -199,3 +199,11 @@ Trust device so that it reconnects automatically.
 FastConnectable=true
 AutoEnable=true
 
+* Imagemagick batch operations
+** Crop
+   mogrify -crop x_size+y_size+x_left_top+y_left_top *.png
+** Upsample
+convert *.png -resize 200% *.png
+* VPNC 
+sudo cp <vpn_profile>.conf /etc/vpnc
+sudo vpnc <vpn_profile>
