@@ -224,3 +224,7 @@ convert *.png -resize 200% *.png
 * VPNC 
 sudo cp <vpn_profile>.conf /etc/vpnc
 sudo vpnc <vpn_profile>
+* sudoers
+In file /etc/sudoers.d/10-me
+
+froggy ALL=(ALL) NOPASSWD:ALL

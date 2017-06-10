@@ -26,6 +26,7 @@ conky
 xinitrc
 screenlayout
 screenToggle.sh:bin/screenToggle.sh
+set_wp.sh:bin/set_wp.sh
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
