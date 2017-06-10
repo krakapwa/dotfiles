@@ -198,6 +198,23 @@ Trust device so that it reconnects automatically.
 ** /etc/bluetooth/main.conf
 FastConnectable=true
 AutoEnable=true
+* TLP
+http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#installation
+
+tlp (Community) – Power saving
+tlp-rdw (Community) – optional, Radio Device Wizard
+tp_smapi (Community) – optional ThinkPad only, tp-smapi is needed for battery charge thresholds, recalibration and specific status output of tlp-stat
+acpi_call (Community) – optional ThinkPad only, acpi-call is needed for battery charge thresholds and recalibration on Sandy Bridge and newer models (X220/T420, X230/T430 et al.)
+
+pacman -S tlp tlp-rdw 
+pacman -S tp_smapi acpi_call 
+
+You must disable Secure Boot to use the ThinkPad specific packages
+
+systemctl enable tlp.service
+systemctl enable tlp-sleep.service 
+systemctl enable NetworkManager-dispatcher.service 
+systemctl mask systemd-rfkill.service 
 
 * Imagemagick batch operations
 ** Crop

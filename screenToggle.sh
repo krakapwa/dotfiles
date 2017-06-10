@@ -9,10 +9,13 @@ if [ $# -eq 0 ]
     if [ ! -e $TOGGLE ]; then
         touch $TOGGLE
         $HOME/.screenlayout/single.sh
+        conky -c ~/.conky/conky_maia 
     else
         rm $TOGGLE
         $HOME/.screenlayout/t430.sh
+        conky -c ~/.conky/conky_maia 
     fi
 else
     $HOME/.screenlayout/single.sh
+    conky -c ~/.conky/conky_maia 
 fi

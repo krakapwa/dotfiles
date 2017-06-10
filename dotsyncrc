@@ -24,7 +24,8 @@ config
 gitconfig
 conky
 xinitrc
-emacs.d
+screenlayout
+screenToggle.sh:bin/screenToggle.sh
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
