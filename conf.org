@@ -237,7 +237,11 @@ sudo docker info|grep "Docker Root Dir"
 v: Invert selection
 :bulkrename
 <alt>-{1-9}: make tab
+** Previews
+ranger --copy-config scope
+sudo apt install atool 
+set use_preview_script true
+set preview_images true
 * sudoers
 In file /etc/sudoers.d/10-me
-
 froggy ALL=(ALL) NOPASSWD:ALL
