@@ -1,7 +1,9 @@
 #ignore private ssh key
+\#*#
 bashrc
 ssh
 emacs.d
+fonts
 config/Thunar
 config/dconf
 config/evolution
@@ -10,6 +12,10 @@ config/pulse
 config/xfce4
 config/smplayer
 config/viewnior
+config/deluge
+config/pcmanfm
+config/ranger/bookmarks
+config/ranger/history
 config/Cutegram
 config/manjaro
 config/nemo

@@ -3,10 +3,21 @@
 
 TOGGLE=$HOME/bin/.toggle
 
-if [ ! -e $TOGGLE ]; then
-    touch $TOGGLE
-    $HOME/.screenlayout/single.sh
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    if [ ! -e $TOGGLE ]; then
+        touch $TOGGLE
+        $HOME/.screenlayout/single.sh
+        conky -c $HOME/.conky/conky_maia 
+        $HOME/bin/set_wp.sh
+    else
+        rm $TOGGLE
+        $HOME/.screenlayout/t430.sh
+        conky -c ~/.conky/conky_maia 
+        $HOME/bin/set_wp.sh
+    fi
 else
-    rm $TOGGLE
-    $HOME/.screenlayout/artorg.sh
+    $HOME/.screenlayout/single.sh
+    conky -c ~/.conky/conky_maia 
 fi
