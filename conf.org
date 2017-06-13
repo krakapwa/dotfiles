@@ -196,6 +196,19 @@ backend : Qt5Agg
    mogrify -crop x_size+y_size+x_left_top+y_left_top *.png
 ** Upsample
 convert *.png -resize 200% *.png
+** Grayscale (1 channel) to RGB (3 channels)
+   convert *.png -define png:color-type=2 *.png
 * VPNC 
 sudo cp <vpn_profile>.conf /etc/vpnc
 sudo vpnc <vpn_profile>
+* Docker
+Store images in home directory:
+sudo vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/docker daemon -H fd:// --graph="/home/user/docker"
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo docker info|grep "Docker Root Dir"
+* Ranger file manager
+v: Invert selection
+:bulkrename
+<alt>-{1-9}: make tab

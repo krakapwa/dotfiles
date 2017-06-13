@@ -1,7 +1,19 @@
 [Default Applications]
 application/x-lyx=userapp-lyx-DIY4FY.desktop
+x-scheme-handler/tg=telegramdesktop.desktop
+text/csv=gvim.desktop
 
 [Added Associations]
 application/x-lyx=userapp-lyx-DIY4FY.desktop;
 application/pdf=evince.desktop;
 text/plain=gvim.desktop;
+video/x-msvideo=vlc.desktop;
+image/png=eog.desktop;gimp.desktop;
+image/jpeg=eog.desktop;
+video/mp4=vlc.desktop;
+text/csv=gvim.desktop;libreoffice-calc.desktop;
+application/x-python-bytecode=gvim.desktop;
+application/zip=mount-archive.desktop;xarchiver.desktop;
+application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
+text/x-python=gvim.desktop;vim.desktop;emacs24-term.desktop;
+application/x-shellscript=emacs24-term.desktop;
