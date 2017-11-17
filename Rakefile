@@ -7,6 +7,7 @@ task :install do
   install_oh_my_zsh
   install_vim
   switch_to_zsh
+  install_fonts
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
   files << "oh-my-zsh/custom/plugins/rbates"
@@ -49,9 +50,6 @@ def link_file(file)
     File.open(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"), 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
-  elsif file =~ /zshrc$/ # copy zshrc instead of link
-    puts "copying ~/.#{file}"
-    system %Q{cp "$PWD/#{file}" "$HOME/.#{file}"}
   else
     puts "linking ~/.#{file}"
     system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
@@ -105,6 +103,19 @@ def install_vim
       system %Q{curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh}
     when 'q'
       puts "skipping spf13-vim"
+      exit
+    end
+end
+
+def install_fonts
+  print "install powerline fonts? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing powerline fonts"
+      system %Q{git clone https://github.com/powerline/fonts.git --depth=1}
+      system %Q{cd fonts && sh install.sh}
+    when 'q'
+      puts "skipping powerline fonts"
       exit
     end
 end
