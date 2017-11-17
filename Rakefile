@@ -2,8 +2,11 @@ require 'rake'
 require 'erb'
 
 desc "install the dot files into user's home directory"
+task :test do
+  install_xfce4_term_themes
+end
+
 task :install do
-  deepin_swap_caps
   install_oh_my_zsh
   install_vim
   switch_to_zsh
@@ -90,10 +93,6 @@ def install_oh_my_zsh
   end
 end
 
-def deepin_swap_caps
-  system %Q{gsettings set com.deepin.dde.keybinding.mediakey capslock '[]'}
-  system %Q{gsettings set com.deepin.dde.keyboard layout-options '["caps:swapescape"]'}
-end
 
 def install_vim
   print "install spf13-vim? [ynq] "
@@ -116,6 +115,20 @@ def install_fonts
       system %Q{cd fonts && sh install.sh}
     when 'q'
       puts "skipping powerline fonts"
+      exit
+    end
+end
+
+def install_xfce4_term_themes
+  print "install xfce4-terminal themes? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing xfce4-terminal themes"
+      system %Q{git clone https://github.com/chriskempson/base16-xfce4-terminal}
+      system %Q{cd base16-xfce4-terminal && ruby convert2themes}
+      system %Q{sudo cp -r base16-xfce4-terminal/themes/. /usr/share/xfce4/terminal/colorschemes/}
+    when 'q'
+      puts "skipping xfce4-terminal themes"
       exit
     end
 end
