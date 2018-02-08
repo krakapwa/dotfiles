@@ -123,12 +123,10 @@ def install_xfce4_term_themes
   print "install xfce4-terminal themes? [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      puts "installing xfce4-terminal themes"
-      system %Q{git clone https://github.com/chriskempson/base16-xfce4-terminal}
-      system %Q{cd base16-xfce4-terminal && ruby convert2themes}
-      system %Q{sudo cp -r base16-xfce4-terminal/themes/. /usr/share/xfce4/terminal/colorschemes/}
+      puts "installing xfce4-terminal theme"
+      system %Q{sudo cp zenburn.theme /usr/share/xfce4/terminal/colorschemes/}
     when 'q'
-      puts "skipping xfce4-terminal themes"
+      puts "skipping xfce4-terminal theme"
       exit
     end
 end
