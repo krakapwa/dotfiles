@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export EDITOR="vim"
+export VISUAL="vim"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -112,6 +113,8 @@ export EDITOR="vim"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias em="emacsclient -nca ''"
 
 bindkey "^K" up-line-or-search
 bindkey "^J" down-line-or-search
