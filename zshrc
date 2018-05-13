@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/$HOME/.bin:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
@@ -18,10 +18,10 @@ BULLETTRAIN_PROMPT_ORDER=(
   virtualenv
   git
 )
+BULLETTRAIN_CONTEXT_BG=238
 BULLETTRAIN_VIRTUALENV_BG=green
-BULLETTRAIN_DIR_BG=red
+BULLETTRAIN_DIR_BG=013
 BULLETTRAIN_DIR_FG=white
-BULLETTRAIN_CONTEXT_DEFAULT_USER=krakapwa
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of

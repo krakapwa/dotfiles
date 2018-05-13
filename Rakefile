@@ -120,6 +120,18 @@ def install_fonts
     end
 end
 
+def x_screen_tearing_fix
+  print "add screen tearing fix to X11? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing"
+      system %Q{sudo ln -s $PWD/92-nvidia.conf /etc/X11/xorg.conf.d/92-nvidia.conf}
+    when 'q'
+      puts "skipping"
+      exit
+    end
+end
+
 def copy_swapescape
   print "install xorg config to swap capslock and escape? [ynq] "
     case $stdin.gets.chomp

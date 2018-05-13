@@ -2,7 +2,8 @@ UnBundle 'vim-airline/vim-airline'
 UnBundle 'vim-airline/vim-airline-themes'
 
 set background=dark
-colorscheme palenight
+" colorscheme palenight
+colorscheme dracula
 let g:lightline = {
       \ 'colorscheme': 'palenight',
       \ }
