@@ -11,6 +11,7 @@ task :install do
   install_oh_my_zsh
   install_vim
   switch_to_zsh
+  x_screen_tearing_fix
   install_fonts
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]

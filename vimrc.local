@@ -12,6 +12,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+if has("gui_running")
+    set guifont=Hack\ 12
+endif
+
 set guioptions-=m
 
 set nospell
