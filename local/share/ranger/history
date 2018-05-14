@@ -1,0 +1,12 @@
+open_with vlc
+search blue
+search good
+search ugl
+delete
+find tm
+find .bin
+find .bi
+
+search .bin
+set colorscheme jungle
+set colorscheme snow

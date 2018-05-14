@@ -3,13 +3,15 @@ require 'erb'
 
 desc "install the dot files into user's home directory"
 task :test do
-  install_xfce4_term_themes
+  init_emacsd_service
 end
 
 task :install do
+  copy_swapescape
   install_oh_my_zsh
   install_vim
   switch_to_zsh
+  x_screen_tearing_fix
   install_fonts
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
@@ -119,14 +121,39 @@ def install_fonts
     end
 end
 
-def install_xfce4_term_themes
-  print "install xfce4-terminal themes? [ynq] "
+def x_screen_tearing_fix
+  print "add screen tearing fix to X11? [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      puts "installing xfce4-terminal theme"
-      system %Q{sudo cp zenburn.theme /usr/share/xfce4/terminal/colorschemes/}
+      puts "installing"
+      system %Q{sudo ln -s $PWD/92-nvidia.conf /etc/X11/xorg.conf.d/92-nvidia.conf}
     when 'q'
-      puts "skipping xfce4-terminal theme"
+      puts "skipping"
+      exit
+    end
+end
+
+def copy_swapescape
+  print "install xorg config to swap capslock and escape? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing"
+      system %Q{sudo ln -s $PWD/91-swapesc.conf /etc/X11/xorg.conf.d/91-swapesc.conf}
+    when 'q'
+      puts "skipping"
+      exit
+    end
+end
+
+def init_emacsd_service
+  print "enable emacs daemon service? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "enabling/starting emacs daemon"
+      system %Q{systemctl --user enable emacsd}
+      system %Q{systemctl --user start emacsd}
+    when 'q'
+      puts "skipping"
       exit
     end
 end

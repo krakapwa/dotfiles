@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/$HOME/.bin:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 #export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
@@ -19,10 +19,10 @@ BULLETTRAIN_PROMPT_ORDER=(
   virtualenv
   git
 )
+BULLETTRAIN_CONTEXT_BG=238
 BULLETTRAIN_VIRTUALENV_BG=green
-BULLETTRAIN_DIR_BG=red
+BULLETTRAIN_DIR_BG=013
 BULLETTRAIN_DIR_FG=white
-BULLETTRAIN_CONTEXT_DEFAULT_USER=krakapwa
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export EDITOR="vim"
+export VISUAL="vim"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -113,6 +114,8 @@ export EDITOR="vim"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias em="emacsclient -nca ''"
 
 bindkey "^K" up-line-or-search
 bindkey "^J" down-line-or-search

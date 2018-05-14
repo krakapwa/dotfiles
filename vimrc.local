@@ -1,3 +1,23 @@
-colorscheme zenburn
+UnBundle 'vim-airline/vim-airline'
+UnBundle 'vim-airline/vim-airline-themes'
+
+set background=dark
+" colorscheme palenight
+colorscheme dracula
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ }
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+if has("gui_running")
+    set guifont=Hack\ 12
+endif
+
+set guioptions-=m
+
 set nospell
 set relativenumber
+set noshowmode

@@ -1,0 +1,5 @@
+let g:spf13_bundle_groups=['general', 'programming', 'ruby', 'python', 'html', 'misc']
+
+Bundle 'drewtempelmeyer/palenight.vim'
+Bundle 'dracula/vim'
+Bundle 'itchyny/lightline.vim'
