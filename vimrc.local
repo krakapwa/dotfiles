@@ -6,7 +6,6 @@ let g:lightline = {
       \ 'colorscheme': 'palenight',
       \ }
 
-
 colorscheme palenight
 
 if has("gui_running")
