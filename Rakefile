@@ -7,12 +7,6 @@ task :test do
 end
 
 task :install do
-  copy_swapescape
-  install_oh_my_zsh
-  install_vim
-  switch_to_zsh
-  x_screen_tearing_fix
-  install_fonts
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
   files << "oh-my-zsh/custom/plugins/rbates"
@@ -42,6 +36,12 @@ task :install do
       link_file(file)
     end
   end
+  copy_swapescape
+  install_oh_my_zsh
+  install_vim
+  switch_to_zsh
+  x_screen_tearing_fix
+  install_fonts
 end
 
 def replace_file(file)

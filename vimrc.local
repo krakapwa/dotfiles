@@ -1,16 +1,13 @@
-UnBundle 'vim-airline/vim-airline'
-UnBundle 'vim-airline/vim-airline-themes'
+if (has("termguicolors"))
+  set termguicolors
+endif
 
-set background=dark
-" colorscheme palenight
-colorscheme dracula
 let g:lightline = {
       \ 'colorscheme': 'palenight',
       \ }
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+
+colorscheme palenight
 
 if has("gui_running")
     set guifont=Hack\ 12
@@ -21,3 +18,5 @@ set guioptions-=m
 set nospell
 set relativenumber
 set noshowmode
+
+set background=dark
