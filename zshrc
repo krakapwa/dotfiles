@@ -2,6 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+#export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -117,3 +118,4 @@ bindkey "^K" up-line-or-search
 bindkey "^J" down-line-or-search
 autoload -U zranger
 bindkey -s '^O' 'zranger^M'
+alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
