@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/$HOME/.bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/$HOME/.bin:$HOME/.emacs.d/elpa/rtags-20180619.823/rtags-2.18/bin:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 #export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
@@ -86,8 +86,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
