@@ -2,6 +2,7 @@
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/$HOME/.bin:$HOME/.emacs.d/elpa/rtags-20180619.823/rtags-2.18/bin:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 #export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
 
 # Path to your oh-my-zsh installation.
@@ -21,8 +22,9 @@ BULLETTRAIN_PROMPT_ORDER=(
 )
 BULLETTRAIN_CONTEXT_BG=238
 BULLETTRAIN_VIRTUALENV_BG=red
-BULLETTRAIN_DIR_BG=013
-BULLETTRAIN_DIR_FG=white
+BULLETTRAIN_VIRTUALENV_FG=white
+BULLETTRAIN_DIR_BG=blue
+BULLETTRAIN_DIR_FG=black
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
