@@ -2,7 +2,10 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
+set $mod Mod1
+
+exec "setxkbmap -layout ch,fr"
+exec "setxkbmap -option caps:swapescape"
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -70,16 +73,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+h move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -153,8 +150,8 @@ bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 
 # Open applications on specific workspaces
-assign [class="Firefox"] $ws2
- assign [class="Xfce4-terminal"] $ws1
+#assign [class="Firefox"] $ws2
+ #assign [class="Xfce4-terminal"] $ws1
 # assign [class="Pcmanfm"] 3
 # assign [class="Skype"] 5
 
@@ -240,22 +237,6 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	status_command i3status
-#	wheel_up_cmd nop
-#	wheel_down_cmd nop
-	font pango:Cantarell,Fontawesome 8
-	colors {
-		separator #2ECC71
-		background #3D3D3D
-		statusline #DDDDDD
-		focused_workspace	#18ab8e #18ab8e #FFFFFF
-		active_workspace	#3D3D3D #3D3D3D #FFFFFF
-		inactive_workspace	#3D3D3D #3D3D3D #DDDDDD
-		urgent_workspace	#2ECC71 #900000 #FFFFFF
-	}
-}
 
 # Autostart applications
 exec source ~/.xinitrc
@@ -289,8 +270,8 @@ client.urgent #274D01 #900000 #FFFFFF #900000
 for_window [class="^.*"] border pixel 2
 
 # Set inner/outer gaps
-gaps inner 8
-gaps outer 0
+#gaps inner 8
+#gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -298,11 +279,11 @@ gaps outer 0
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -340,3 +321,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Launch bar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
