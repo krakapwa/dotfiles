@@ -4,9 +4,12 @@ ENVNAME=my-3.6
 
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
+sudo pacman -S tk
+
 pyenv install $VERSION
 pyenv virtualenv $VERSION $ENVNAME
 
 pyenv activate $ENVNAME
 
-pip install jedi flake8 importmagic autopep8 yapf
+pip install jedi flake8 importmagic autopep8 yapf ipython pandas matplotlib
+pip install scipy
