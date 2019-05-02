@@ -9,8 +9,6 @@ end
 task :install do
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
-  files << "oh-my-zsh/custom/plugins/rbates"
-  files << "oh-my-zsh/custom/rbates.zsh-theme"
   files.each do |file|
     system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
@@ -69,7 +67,8 @@ def switch_to_zsh
     case $stdin.gets.chomp
     when 'y'
       puts "switching to zsh"
-      system %Q{chsh -s `which zsh`}
+      system %Q{sudo apt install zsh}
+      system %Q{chsh -s $(which zsh)}
     when 'q'
       exit
     else
@@ -113,7 +112,11 @@ def install_fonts
     case $stdin.gets.chomp
     when 'y'
       puts "installing powerline fonts"
-      system %Q{git clone https://github.com/powerline/fonts.git --depth=1}
+      if(Dir.exist?('fonts'))
+        puts 'fonts directory already exists'
+      else
+        system %Q{git clone https://github.com/powerline/fonts.git --depth=1}
+      end
       system %Q{cd fonts && sh install.sh}
     when 'q'
       puts "skipping powerline fonts"

@@ -8,7 +8,6 @@ colorscheme dracula
 
 if has("gui_running")
     set guifont=Source\ Code\ Pro\ for\ Powerline\ Semibold\ 12
-    "set guifont=Hack\ 11
 endif
 
 set guioptions-=m
