@@ -151,5 +151,5 @@ bindkey -s '^O' 'zranger^M'
 alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
 
 
-export EDITOR=emt
+export EDITOR=vim
 
