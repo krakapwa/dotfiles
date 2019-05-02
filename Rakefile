@@ -78,6 +78,7 @@ def switch_to_zsh
   end
 end
 
+
 def install_oh_my_zsh
   if File.exist?(File.join(ENV['HOME'], ".oh-my-zsh"))
     puts "found ~/.oh-my-zsh"
