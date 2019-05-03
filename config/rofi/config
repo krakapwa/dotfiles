@@ -1,3 +1,4 @@
+rofi.modi: window,run,ssh
 rofi.color-enabled: true
 
 ! Window: ‘background’, ‘border’, ‘separator’
@@ -22,3 +23,8 @@ rofi.eh: 1
 rofi.separator-style: solid
 rofi.hide-scrollbar: false
 rofi.auto-select: false
+
+rofi.terminal: xfce4-terminal
+rofi.ssh-client: ssh
+rofi.ssh-command: {terminal} -x {ssh-client} {host}
+rofi.parse-hosts: false
