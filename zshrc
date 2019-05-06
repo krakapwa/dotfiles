@@ -6,6 +6,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 #export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
 
+export ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -22,7 +23,6 @@ BULLETTRAIN_PROMPT_ORDER=(
   context
   dir
   virtualenv
-  git
 )
 BULLETTRAIN_CONTEXT_BG=238
 BULLETTRAIN_VIRTUALENV_BG=red
