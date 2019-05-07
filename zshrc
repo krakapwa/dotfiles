@@ -151,6 +151,7 @@ bindkey -s '^O' 'zranger^M'
 alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
 
 alias -g 'llvm=llvm -t zsh'
+alias tmux='tmux -u'
 
 export EDITOR=vim
 
