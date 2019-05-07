@@ -1,1 +1,6 @@
 let g:spf13_no_views = 1
+
+set encoding=utf-8
+let g:Powerline_symbols='unicode'
+let g:airline_powerline_fonts=1
+
