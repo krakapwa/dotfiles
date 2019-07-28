@@ -2,22 +2,25 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
+set $mod Mod1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
+exec "setxkbmap -layout ch -variant fr"
+exec "setxkbmap -option caps:swapescape"
+
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2
+new_window pixel 1
 new_float normal
 
 # Hide borders
-hide_edge_borders none
+#hide_edge_borders none
 
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 2
-bindsym $mod+n border normal
+#bindsym $mod+u border none
+#bindsym $mod+y border pixel 2
+#bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,7 +30,7 @@ font pango:Cantarell 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+t exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -35,8 +38,8 @@ bindsym $mod+q kill
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
 #bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "85" -bw 0 
-
+#bindsym $mod+d exec "rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi"
+bindsym $mod+d exec "rofi -combi-modi window,drun -show drun -terminal $HOME/.bin/xfce4-terminal.wrapper -sidebar-mode -font 'hack 10' -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && exec notify-send 'brightness up'
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && exec notify-send 'brightness down'
@@ -44,11 +47,10 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "85" -bw 0
 # Start Applications
 # bindsym $mod+F1 exec thunderbird
 bindsym $mod+F2 exec firefox
-bindsym $mod+s exec /home/froggy/bin/screenToggle.sh
+bindsym $mod+s exec $HOME/bin/screenToggle.sh
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F4 exec libreoffice
-bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym $mod+Shift+d exec killall dunst && exec notify-send 'restart dunst'
@@ -61,7 +63,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 2%+ && voln
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 2%- && volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1)"
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle && if amixer get Master | grep -Fq '[off]'; then volnoti-show -m; else volnoti-show $(amixer get Master | grep -Po '[0-9]+(?=%)' | head -1); fi"
 
-# focus_follows_mouse no
+ focus_follows_mouse yes
 
 # change focus
 bindsym $mod+h focus left
@@ -70,16 +72,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+h move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -93,14 +89,14 @@ bindsym $mod+c split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
 
 # toggle fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -112,15 +108,14 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
 
 # Workspace names
-set $ws1 "1: Terms "
-set $ws2 "2: Web "
+#set $ws1 "1: Terms "
+#set $ws2 "2: Web "
 #set $ws3 "3: X2go"
 # set $ws3 4:
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-#bindsym $mod+3 workspace $ws3
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -153,8 +148,8 @@ bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 
 # Open applications on specific workspaces
-assign [class="Firefox"] $ws2
- assign [class="Xfce4-terminal"] $ws1
+#assign [class="Firefox"] $ws2
+ #assign [class="Xfce4-terminal"] $ws1
 # assign [class="Pcmanfm"] 3
 # assign [class="Skype"] 5
 
@@ -240,22 +235,6 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	status_command i3status
-#	wheel_up_cmd nop
-#	wheel_down_cmd nop
-	font pango:Cantarell,Fontawesome 8
-	colors {
-		separator #2ECC71
-		background #3D3D3D
-		statusline #DDDDDD
-		focused_workspace	#18ab8e #18ab8e #FFFFFF
-		active_workspace	#3D3D3D #3D3D3D #FFFFFF
-		inactive_workspace	#3D3D3D #3D3D3D #DDDDDD
-		urgent_workspace	#2ECC71 #900000 #FFFFFF
-	}
-}
 
 # Autostart applications
 exec source ~/.xinitrc
@@ -285,11 +264,10 @@ client.urgent #274D01 #900000 #FFFFFF #900000
 ### settings for i3-gaps: ###
 #############################
 
-# Disable window titlebars entirely
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 
 # Set inner/outer gaps
-gaps inner 8
+gaps inner 0
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -340,3 +318,8 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Launch bar
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id tint2
+
