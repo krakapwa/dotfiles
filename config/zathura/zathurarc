@@ -16,7 +16,9 @@ set scroll-step 100
 
 #zoom settings
 set zoom-min 10
-set guioptions ""
+set guioptions "svh"
+
+set window-title-basename "true"
 
 # zathurarc-dark
 
@@ -63,5 +65,5 @@ map [fullscreen] f toggle_fullscreen
 map c recolor
 map p print
 
-# Scrollbars
+set show-scrollbars 
 set show-scrollbars 

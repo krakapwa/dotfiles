@@ -74,10 +74,10 @@ bindsym $mod+l focus right
 bindsym $mod+h focus left
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -125,14 +125,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1:1:stuff
-set $ws2 2:2:coding
-set $ws3 3:3:coding
-set $ws4 4:4:runs
-set $ws5 5:5:papers
+set $ws1 1: stuff
+set $ws2 2: coding
+set $ws3 3: coding
+set $ws4 4: runs
+set $ws5 5: papers
 set $ws6 6
-set $ws7 7:7:mail
-set $ws8 8:8:music
+set $ws7 7: mail
+set $ws8 8: music
 
 # switch to workspace
 bindsym $mod+Ctrl+h workspace prev
@@ -177,6 +177,7 @@ for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [class="Viewnior"] floating enable border normal
+for_window [class="matplotlib"] floating enable border normal
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
@@ -262,12 +263,14 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+exec --no-startup-id nextcloud
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec "setxkbmap ch fr"
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
+exec_always ~/.config/polybar/polybar.sh
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
@@ -306,37 +309,34 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-	# status_command i3status
-    status_command py3status -c ~/.config/i3/i3status.conf
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        background #202A2E
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #202A2E #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+#bar {
+#	i3bar_command i3bar
+#	# status_command i3status
+#    status_command py3status -c ~/.config/i3/i3status.conf
+#	position bottom
+#
+### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+##	tray_output primary
+##	tray_output eDP1
+#
+#	bindsym button4 nop
+#	bindsym button5 nop
+##   font xft:URWGothic-Book 11
+#	strip_workspace_numbers yes
+#
+#    colors {
+#        background #202A2E
+#        statusline #F9FAF9
+#        separator  #454947
+#
+##                      border  backgr. text
+#        focused_workspace  #F9FAF9 #16a085 #292F34
+#        active_workspace   #595B5B #353836 #FDF6E3
+#        inactive_workspace #595B5B #202A2E #EEE8D5
+#        binding_mode       #16a085 #2C2C2C #F9FAF9
+#        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#    }
+#}
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border

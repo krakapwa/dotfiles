@@ -2,9 +2,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:airline_theme='dracula'
+let g:airline_theme='base16_nord'
 
-colorscheme dracula
+colorscheme nord
 
 if has("gui_running")
     set guifont=Source\ Code\ Pro\ for\ Powerline\ Semibold\ 12

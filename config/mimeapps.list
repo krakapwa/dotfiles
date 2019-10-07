@@ -2,6 +2,8 @@
 application/x-lyx=userapp-lyx-DIY4FY.desktop
 x-scheme-handler/tg=telegramdesktop.desktop
 text/csv=gvim.desktop
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
+x-scheme-handler/webcal=google-chrome.desktop
 
 [Added Associations]
 application/x-lyx=userapp-lyx-DIY4FY.desktop;
@@ -23,7 +25,6 @@ text/x-tex=emacs.desktop;gvim.desktop;
 application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop;
 application/vnd.lotus-organizer=gvim.desktop;
 image/png=viewnior.desktop;
-application/pdf=evince.desktop;
 text/plain=gvim.desktop;
 application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop;
 audio/x-wav=vlc.desktop;
@@ -46,7 +47,8 @@ application/octet-stream=gvim.desktop;
 video/x-msvideo=org.gnome.Totem.desktop;
 video/x-matroska=org.gnome.Totem.desktop;
 video/mp4=org.gnome.Totem.desktop;
-application/pdf=evince.desktop;
 text/x-python=gvim.desktop;
 text/plain=gvim.desktop;
 image/jpeg=viewnior.desktop;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
+application/x-yaml=gvim.desktop;
