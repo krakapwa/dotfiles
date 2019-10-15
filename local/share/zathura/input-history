@@ -1,0 +1,295 @@
+:help 
+:set adjust-open
+/huang
+/inferen
+/stochastic
+/SGD
+/512
+/fusion
+/flow
+/127
+/18
+/level
+/magn
+/magnetos
+:write /home/krakapwa/ownCloud/papers/cheng19.pdf
+/DARNet
+/14
+/drawba
+/drawback
+/archit
+/distance
+/scale
+/figure 2
+/adam
+/discr
+/dis
+/parametric
+/trans
+/parame
+:help
+:write /home/krakapwa/ownCloud/papers/cremers15.pdf
+:write /home/krakapwa/ownCloud/papers/cremers02.pdf
+/cartoon
+/cartoo
+/scaling
+/gradient desc
+/mumfo
+/diffus
+/diffusion sn
+:set selection-clipboard
+:set selection-clipboard clipboard
+/werman
+/dryden
+/sanch
+/San
+/using prior shapes
+/using prior shape
+/spli
+/mumford
+/1996
+/shape prior
+/dynamical statis
+/location
+:write /home/krakapwa/ownCloud/papers/klement11.pdf
+:write /home/krakapwa/ownCloud/papers/klement15.pdf
+/motion
+/sds
+/fourier-base
+/chermi
+:write /home/krakapwa/ownCloud/papers/collewet09.pdf
+:write /home/krakapwa/ownCloud/papers/mezghich12.pdf
+:write /home/krakapwa/ownCloud/papers/li11.pdf
+/unser
+:write /home/krakapwa/ownCloud/papers/foulonneau09.pdf
+/foul
+/rotation
+/legend
+/appendix
+/region-b
+/29
+/steep
+/gradient des
+:write /home/krakapwa/ownCloud/papers/szekely96.pdf
+:write /home/krakapwa/ownCloud/papers/kelemen96.pdf
+:write /home/krakapwa/ownCloud/papers/szekely95.pdf
+/shape
+/vese
+/green
+/fdm
+:write /home/krakapwa/ownCloud/papers/xie11.pdf
+/rotat
+/fourier
+/condit
+/gaussian
+/arct
+/overcom
+/computa
+/practical implemen
+/memo
+/comput
+/unique
+/wendla
+/radial
+:write /home/krakapwa/ownCloud/papers/chan01.pdf
+/heavi
+/backgr
+/kampf
+/continuous
+:write /home/krakapwa/Documents/administratif/attestation_travail.pdf
+:write /home/krakapwa/Documents/administratif/permis_b_2019.pdf
+/cod
+/pretr
+/epoch
+/dilated
+:write /home/krakapwa/ownCloud/papers/yu17.pdf
+/critèr
+/stoï
+/crit
+/criter
+:set show-directories
+:set guioptions hsv
+:set guioptions
+/cremer
+/.com
+/com
+:write /home/krakapwa/ownCloud/papers/kampffmeyer19.pdf
+/blitznet
+/local
+:write /home/krakapwa/ownCloud/papers/dvornik17.pdf
+:write /home/krakapwa/ownCloud/papers/wang17.pdf
+/non-li
+/non-lo
+/block
+/ressk
+/skip
+/resskip
+/aspp
+/atrous
+/sigm
+/VD
+/MLP
+/diffusion
+/cremers
+/appen
+/crem
+:write /home/krakapwa/ownCloud/papers/karami18.pdf
+/coll
+/sobolev
+/spherical harmo
+/reini
+/re-in
+/chan
+/sphe
+/tan
+/baust
+:write /home/krakapwa/ownCloud/papers/getreuer12.pdf
+/semi-implici
+/step
+/lagra
+/tol
+/stop
+/station
+/impli
+/euler
+/HT
+/compl
+/complete
+:write /home/krakapwa/ownCloud/papers/luo08.pdf
+/desc
+:write /home/krakapwa/ownCloud/papers/jamshidi10.pdf
+:write /home/krakapwa/ownCloud/papers/brigger00.pdf
+/spline
+/quadra
+/cubic
+/farin
+/blake
+/knot
+/node
+/table
+/phase
+/initi
+/active
+/boundary
+/compactn
+/regional constr
+/cliq
+/connected
+/4.3
+/efficient fusion
+:write /home/krakapwa/ownCloud/papers/schulter17.pdf
+/parti
+/minima
+/greedy
+:write /home/krakapwa/ownCloud/papers/bertasius16.pdf
+/memor
+/impl
+/size
+/224
+/convolution ran
+/normalization
+/trac
+/[1
+/[1]
+/similar
+/soft
+/radius
+/testing
+/fully
+/thresho
+/fc8
+/seed
+/degree
+/iter
+/converg
+/21
+/normali
+/loss
+/euclidean
+/norma
+/W
+/diffusio
+/exp
+/expo
+/random
+/15
+/influen
+/5
+/ncuts
+/Ny
+/smallest
+/whiten
+/nyst
+/laplaci
+/eigen
+/invers
+/nystr
+:setq
+:set window-title-basename
+/samp
+/very larg
+/inver
+/α
+/affinity
+/singu
+/shrink
+/walk
+/git
+/code
+/refin
+/pairw
+/resn
+/backb
+/deepl
+/drn
+/DRN
+/deeplab
+/multi
+/démocra
+/référend
+/marx
+/instruments de par
+/femm
+/lfda
+:write /home/krakapwa/ownCloud/papers/nalisnick19.pdf
+/kingma
+:print
+:write /home/krakapwa/Nextcloud/papers/xie18.pdf
+/simple
+/nys
+/\[4
+/berta
+/invert
+/selecti
+/deep
+/combin
+/contour
+:write /home/krakapwa/Nextcloud/papers/ponttuset16.pdf
+:write /home/krakapwa/Nextcloud/papers/ponttuset15.pdf
+/affini
+/OWT
+/COB
+/orient
+/mani
+/orien
+:write /home/krakapwa/Nextcloud/papers/bertasius17.pdf
+/prior
+/supervisory
+/ultr
+/HED
+/sparse bound
+/oriented
+/watershed
+/merging
+/cheng
+/SVM
+/17
+/merg
+/image
+/gith
+/max
+/selective
+/train
+:write /home/krakapwa/Nextcloud/papers/ying18.pdf
+/gPb
+/ucm
