@@ -236,7 +236,7 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = " %d-%m-%Y"
+date = "%A %d-%m-%Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -338,7 +338,7 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 80
 
 format = <ramp> <label>
 format-underline = #f50a4d
