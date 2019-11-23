@@ -11,24 +11,24 @@ export ZSH_DISABLE_COMPFIX=true
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-
+export TERM=xterm-256color
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bullet-train"
+ZSH_THEME="gentoo"
 
 
-BULLETTRAIN_PROMPT_ORDER=(
-  context
-  dir
-  virtualenv
-)
-BULLETTRAIN_CONTEXT_BG=238
-BULLETTRAIN_VIRTUALENV_BG=red
-BULLETTRAIN_VIRTUALENV_FG=black
-BULLETTRAIN_DIR_BG=blue
-BULLETTRAIN_DIR_FG=black
+# BULLETTRAIN_PROMPT_ORDER=(
+#   context
+#   dir
+#   virtualenv
+# )
+# BULLETTRAIN_CONTEXT_BG=238
+# BULLETTRAIN_VIRTUALENV_BG=red
+# BULLETTRAIN_VIRTUALENV_FG=black
+# BULLETTRAIN_DIR_BG=blue
+# BULLETTRAIN_DIR_FG=black
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
