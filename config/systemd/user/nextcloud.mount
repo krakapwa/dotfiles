@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount WebDAV Service
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=https://krakapwa:xyz
+Where=$HOME/Nextcloud
+Options=uid=1000,file_mode=0664,dir_mode=2775,grpid
+Type=davfs
+TimeoutSec=15
+
+[Install]
+WantedBy=multi-user.target
+

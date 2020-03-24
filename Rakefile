@@ -136,6 +136,18 @@ def x_screen_tearing_fix
     end
 end
 
+def gsettings_swapescape
+  print "apply gsettings conf to swap capslock and escape? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "applying xkb-options through gsettings"
+      system %Q{gsettings set org.gnome.desktop.input-sources xkb-options "['caps:swapescape']"}
+    when 'q'
+      puts "skipping"
+      exit
+    end
+end
+
 def copy_swapescape
   print "install xorg config to swap capslock and escape? [ynq] "
     case $stdin.gets.chomp
