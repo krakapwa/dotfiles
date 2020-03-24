@@ -80,10 +80,14 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+#
+# split orientation
+# bindsym $mod+y move scratchpad
+# bindsym $mod+x scratchpad show
 
 # split orientation
-bindsym $mod+c split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+c split h
+bindsym $mod+v split v
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
@@ -286,7 +290,7 @@ bar {
   font $i3-wm.bar.font
   separator_symbol " "
   status_command i3xrocks -c $i3xrocks_config
-  tray_output none
+  tray_output primary
   strip_workspace_numbers yes
 
   colors {
@@ -303,6 +307,8 @@ bar {
 }
 
 # Run programs when i3 starts
+exec --no-startup-id nextcloud
+exec --no-startup-id nm-applet
 
 # Start the composite manager
 exec --no-startup-id compton -f --config $compton_config
