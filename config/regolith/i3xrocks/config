@@ -31,8 +31,8 @@ label_color=xresource:i3xrocks.label.color
 # Network manager VPN
 #
 # Displays currently connected VPN using the nm-cli tool.
-# [nm-vpn]
-# interval=5
+[nm-vpn]
+interval=5
 
 # Wifi
 #
@@ -68,7 +68,7 @@ min_width=100%
 # To display est. time remaining, uncomment "display_time_left".
 #
 # To display the battery icon only, uncomment "icon_only".
-[battery2]
+[battery]
 interval=30
 #display_time_left=true
 percent_color=true
