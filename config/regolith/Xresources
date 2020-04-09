@@ -1,3 +1,2 @@
 ! -- This points to the default looks Xresource root file.
-#include "/etc/regolith/styles/ayu-mirage-regolith/root"
-#include "/home/laurent/.config/regolith/styles/i3-wm"
+#include "/home/laurent/.config/regolith/styles/my/root"
