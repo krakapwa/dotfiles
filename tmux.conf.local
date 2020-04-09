@@ -297,3 +297,9 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+#
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tonylambiris/palenight-tmux'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'

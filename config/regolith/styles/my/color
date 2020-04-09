@@ -15,3 +15,4 @@
 #define color_blue     #73D0FF
 #define color_cyan     #95E6CB
 #define color_green    #BAE67E
+#define color_white    #FFFFFF

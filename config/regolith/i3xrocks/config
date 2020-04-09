@@ -34,20 +34,14 @@ label_color=xresource:i3xrocks.label.color
 [nm-vpn]
 interval=5
 
-# Wifi
-#
-# Displays the wifi network's name
-# If the auto-discovered wifi device is incorrect,
-# override the "instance" value with the desired device
-[wifi]
-#instance=wlp3s0 Replace with your wifi device if you need
-interval=5
+[disk]
+command=~/.config/regolith/i3blocks/disk
+LABEL=home
+MNT=/home
+interval=60
 
-# Keyboard layout
-#
-# Displays current keyboard layout.
-#[keyboard_layout]
-#interval=persist
+[memory]
+interval=10
 
 # CPU usage
 #
@@ -57,6 +51,21 @@ interval=5
 interval=5
 min_width=100%
 #separator=false
+
+# Wifi
+#
+# Displays the wifi network's name
+# If the auto-discovered wifi device is incorrect,
+# override the "instance" value with the desired device
+[wifi]
+interval=5
+
+# Keyboard layout
+#
+# Displays current keyboard layout.
+#[keyboard_layout]
+#interval=persist
+
 
 # Battery indicator
 #

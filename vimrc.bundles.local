@@ -2,4 +2,5 @@ let g:spf13_bundle_groups=['general', 'programming', 'ruby', 'python', 'html', '
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 Bundle 'arcticicestudio/nord-vim'
+Bundle 'drewtempelmeyer/palenight.vim'
 Bundle 'itchyny/lightline.vim'
