@@ -1,5 +1,5 @@
 ! -- Styles - Colors
-#include "/etc/regolith/styles/ayu-mirage-regolith/color"
+#include "/home/laurent/.config//regolith/styles/my/color"
 
 ! -- Styles - Fonts
 #include "/home/laurent/.config/regolith/styles/my/typeface"
