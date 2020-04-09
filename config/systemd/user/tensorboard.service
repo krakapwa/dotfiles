@@ -1,0 +1,9 @@
+[Unit]
+Description=tensorboard
+
+[Service]
+Type=simple
+ExecStart=/home/krakapwa/.pyenv/versions/my-3.6/bin/tensorboard --logdir /home/laurent.lejeune/medical-labeling/dqn
+
+[Install]
+WantedBy=default.target

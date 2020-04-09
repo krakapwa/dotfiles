@@ -1,0 +1,9 @@
+[Unit]
+Description=lsyncd
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/lsyncd -log scarce %h/.lsyncd/lsyncd.lua
+
+[Install]
+WantedBy=default.target
