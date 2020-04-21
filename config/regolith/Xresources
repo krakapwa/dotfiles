@@ -2,5 +2,9 @@
 #include "/home/laurent/.config/regolith/styles/my/root"
 #include "/home/laurent/.config/regolith/rofi/config"
 
+rofi.config: "/home/laurent/.config/regolith/rofi/config"
+
 i3xrocks.date.format2: + %a %d/%m %H:%M
 i3-wm.bar.trayoutput: primary
+i3-wm.program.notifications: "/home/laurent/Documents/software/regolith-rofication/rofication-daemon"
+i3-wm.program.notification_ui: "/home/laurent/Documents/software/regolith-rofication/rofication-gui"

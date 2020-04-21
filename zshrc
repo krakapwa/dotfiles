@@ -141,7 +141,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias emt="emacsclient -ta ''"
+alias emc="emacsclient -c"
 
 
 bindkey "^K" up-line-or-search
@@ -153,5 +153,5 @@ alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
 alias -g 'llvm=llvm -t zsh'
 alias tmux='tmux -u'
 
-export EDITOR=vim
+export EDITOR="emacsclient -c"
 

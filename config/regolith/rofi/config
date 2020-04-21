@@ -1,8 +1,18 @@
+rofi.markup: true
+rofi.markup-rows: true
+rofi.format: i
+rofi.eh: 2
+rofi.lines: 10
+rofi.sep: \0
 rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
 rofi.kb-row-down:                    Down,Control+j
-rofi.kb-accept-entry:                Control+m,Return,KP_Enter
-rofi.terminal:                       mate-terminal
+rofi.kb-accept-entry:                Control+m,KP_Enter,Return
 rofi.kb-remove-to-eol:               Control+Shift+e
 rofi.kb-mode-next:                   Shift+Right,Control+Tab,Control+l
 rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Control+h
 rofi.kb-remove-char-back:            BackSpace
+rofi.kb-delete-entry:
+rofi.kb-remove-char-forward: Control+d
+rofi.kb-custom-1: Delete
+rofi.kb-custom-2: 
+rofi.kb-custom-3: Alt+r

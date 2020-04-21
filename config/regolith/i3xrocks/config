@@ -28,6 +28,13 @@ markup=pango
 color=xresource:i3xrocks.value.color
 label_color=xresource:i3xrocks.label.color
 
+# Rofication
+#
+# Displays notifications.
+[rofication]
+command=~/Documents/software/regolith-rofication/rofication-status
+interval=10
+
 # Network manager VPN
 #
 # Displays currently connected VPN using the nm-cli tool.
