@@ -98,6 +98,7 @@ plugins=(
     colored-man-pages
     command-not-found
     extract
+    z
 )
 
 
@@ -148,6 +149,7 @@ alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
 
 alias -g 'llvm=llvm -t zsh'
 alias tmux='tmux -u'
+alias o='mimeopen'
 
 export EDITOR="emacsclient -c"
 

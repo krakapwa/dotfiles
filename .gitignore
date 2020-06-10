@@ -25,4 +25,4 @@ config/gtk-2.0
 pyenv-installer*
 config/pavucontrol.ini
 lsyncd/log
-local/share/fonts
+local
