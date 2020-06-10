@@ -2,7 +2,6 @@
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/$HOME/.bin:$HOME/.emacs.d/elpa/rtags-20180619.823/rtags-2.18/bin:$PATH
 export PATH=$HOME/Documents/software/deep-mesos/deep-mesos/client-tools:$PATH
 export FPATH=$HOME/.zsh_custom:$FPATH
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 #export PYTHONPATH=$HOME/Documents/gaze-label-web/server/app
 
@@ -92,13 +91,13 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     docker
-  git
-  vi-mode
-  pyenv
-  pip
-  colored-man-pages
-  command-not-found
-  extract
+    git
+    vi-mode
+    pip
+    emacs
+    colored-man-pages
+    command-not-found
+    extract
 )
 
 
@@ -141,9 +140,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias emc="emacsclient -c"
-
-
 bindkey "^K" up-line-or-search
 bindkey "^J" down-line-or-search
 autoload -U zranger
@@ -154,4 +150,22 @@ alias -g 'llvm=llvm -t zsh'
 alias tmux='tmux -u'
 
 export EDITOR="emacsclient -c"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/laurent/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/laurent/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/laurent/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/laurent/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+conda activate my
+# <<< conda initialize <<<
 

@@ -3,7 +3,7 @@ require 'erb'
 
 desc "install the dot files into user's home directory"
 task :test do
-  init_emacsd_service
+  install_terminal_theme
 end
 
 task :install do
@@ -40,6 +40,7 @@ task :install do
   switch_to_zsh
   x_screen_tearing_fix
   install_fonts
+  init_emacsd_service
 end
 
 def replace_file(file)
@@ -77,6 +78,12 @@ def switch_to_zsh
   end
 end
 
+def install_terminal_theme
+  url = "https://raw.githubusercontent.com/Mayccoll/Gogh/master/themes/palenight.sh"
+  puts 'installing terminal theme: .#{url}'
+  system %Q{wget -O xt #{url} && chmod +x xt && export TERMINAL="gnome-terminal" && ./xt && rm xt}
+  # system %Q{wget -O xt #{url} && chmod +x xt}
+end
 
 def install_oh_my_zsh
   if File.exist?(File.join(ENV['HOME'], ".oh-my-zsh"))
