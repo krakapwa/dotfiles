@@ -2,3 +2,5 @@ i3-wm.mod: Mod4
 i3-wm.alt: Mod1
 
 i3xrocks.date.format2: + %a %d/%m %H:%M
+! -- Styles - Colors
+#include "/etc/regolith/styles/lascaille/root"
