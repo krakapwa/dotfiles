@@ -141,13 +141,10 @@ bindsym $alt+Ctrl+9 workspace number $ws19
 bindsym $mod+Tab workspace next
 
 ## Navigate // Next Workspace // <><Alt> → ##
-bindsym Ctrl+$alt+Right workspace next
+bindsym Ctrl+$alt+l workspace next
 
 ## Navigate // Previous Workspace // <><Shift> Tab ##
-bindsym Ctrl+Shift+Tab workspace prev
-
-## Navigate // Previous Workspace // <><Alt> ← ##
-bindsym Ctrl+$alt+Left workspace prev
+bindsym Ctrl+$alt+h workspace prev
 
 ## Navigate // Scratchpad // <><Ctrl> a ##
 bindsym $alt+Ctrl+a scratchpad show
@@ -385,6 +382,7 @@ bindsym $mod+r mode "Resize Mode"
 set_from_resource $i3-wm.window.border.size i3-wm.window.border.size 1
 set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 1
 default_border pixel $i3-wm.window.border.size
+# border_radius: 3
 default_floating_border pixel $i3-wm.floatingwindow.border.size
 
 # Specify the distance between windows in pixels. (i3-gaps)
