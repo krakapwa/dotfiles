@@ -150,8 +150,9 @@ alias pdfjoin="pdfjoin --paper a4paper --rotateoversize false"
 alias -g 'llvm=llvm -t zsh'
 alias tmux='tmux -u'
 alias o='mimeopen'
+alias em='emacsclient -nc'
 
-export EDITOR="emacsclient -c"
+export EDITOR="emacsclient -nc"
 
 
 # >>> conda initialize >>>

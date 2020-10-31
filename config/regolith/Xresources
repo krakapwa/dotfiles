@@ -3,4 +3,8 @@ i3-wm.alt: Mod1
 
 i3xrocks.date.format2: + %a %d/%m %H:%M
 ! -- Styles - Colors
-#include "/etc/regolith/styles/lascaille/root"
+#define gtk_theme Dracula
+#define icon_them Paper
+#include "/home/laurent/.config/regolith/styles/dracula/root"
+
+Xcursor.theme: Paper

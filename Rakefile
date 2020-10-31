@@ -3,7 +3,7 @@ require 'erb'
 
 desc "install the dot files into user's home directory"
 task :test do
-  install_terminal_theme
+  install_gtk_theme
 end
 
 task :install do
@@ -36,11 +36,14 @@ task :install do
   end
   copy_swapescape
   install_oh_my_zsh
+  install_terminal_theme
+  install_gtk_theme
   install_vim
   switch_to_zsh
   x_screen_tearing_fix
   install_fonts
   init_emacsd_service
+  install_doom
 end
 
 def replace_file(file)
@@ -79,10 +82,43 @@ def switch_to_zsh
 end
 
 def install_terminal_theme
-  url = "https://raw.githubusercontent.com/Mayccoll/Gogh/master/themes/palenight.sh"
+  url = "https://raw.githubusercontent.com/Mayccoll/Gogh/master/themes/dracula.sh"
   puts 'installing terminal theme: .#{url}'
   system %Q{wget -O xt #{url} && chmod +x xt && export TERMINAL="gnome-terminal" && ./xt && rm xt}
   # system %Q{wget -O xt #{url} && chmod +x xt}
+end
+
+def install_gtk_theme
+  url = "https://github.com/dracula/gtk/archive/master.zip"
+  puts 'downloading gtk theme: .#{url}'
+  system %Q{wget #{url} && mkdir ~/.themes && unzip master.zip && mv gtk-master ~/.themes/dracula}
+  system %Q{gsettings set org.gnome.desktop.interface gtk-theme "Dracula"}
+  system %Q{gsettings set org.gnome.desktop.wm.preferences theme "Dracula"}
+  system %Q{sudo add-apt-repository ppa:snwh/ppa}
+  system %Q{sudo apt update}
+  system %Q{sudo apt install paper-icon-theme}
+  # system %Q{sudo apt install paper-cursor-theme}
+end
+
+def install_doom
+  url_doom = "https://github.com/hlissner/doom-emacs"
+  url_doom_cfg = "https://github.com/lejeune/doom-emacs-config"
+
+  if(Dir.exist?('~/.emacs.d'))
+    puts 'emacs.d already exists'
+  else
+    puts 'downloading doom emacs from: .#{url_doom}'
+    system %Q{git clone --depth 1 .#{url_doom} ~/.emacs.d}
+    system %Q{~/.emacs.d/bin/doom install}
+  end
+
+  if(Dir.exist?('~/.doom.d'))
+    puts 'doom.d already exists'
+  else
+    puts 'downloading doom emacs config from: .#{url_doom_cfg}'
+    system %Q{git clone .#{url_doom_cfg} ~/.doom.d}
+    system %Q{~/.emacs.d/bin/doom sync}
+  end
 end
 
 def install_oh_my_zsh
