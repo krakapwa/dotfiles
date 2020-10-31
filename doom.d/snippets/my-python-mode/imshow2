@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: imshow2
+# key: imshow2
+# --
+plt.subplot(121);plt.imshow(${1:arr});plt.subplot(122);plt.imshow(${2:arr});plt.show()

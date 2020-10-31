@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: plot
+# key: i
+# --
+plt.plot(${1:arr});plt.show()
