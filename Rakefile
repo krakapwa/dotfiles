@@ -1,9 +1,14 @@
 require 'rake'
 require 'erb'
 
+IGNORE = %w[
+  Rakefile
+  base.png
+  README.md
+].freeze
 desc "install the dot files into user's home directory"
 task :test do
-  install_regolith
+  install_packages
 end
 
 task :install do
@@ -37,7 +42,6 @@ task :install do
   copy_swapescape
   install_packages
   install_oh_my_zsh
-  install_terminal_theme
   install_gtk_theme
   install_vim
   switch_to_zsh
@@ -67,7 +71,7 @@ end
 
 def install_packages
   packages = %w{
-        emacs gconf2 dconf-cli uuid-runtime xfce4-terminal
+        emacs gconf2 dconf-cli uuid-runtime xfce4-terminal ripgrep
       }
       sh "sudo apt-get install #{packages * ' '}"
 end
@@ -111,12 +115,9 @@ def install_gtk_theme
     end
   end
 
-  system %Q{gsettings set org.gnome.desktop.interface gtk-theme "dracula"}
-  system %Q{gsettings set org.gnome.desktop.wm.preferences theme "Dracula"}
   system %Q{sudo add-apt-repository ppa:snwh/ppa}
   system %Q{sudo apt update}
   system %Q{sudo apt install paper-icon-theme}
-  system %Q{gsettings set org.gnome.desktop.wm.preferences theme "Paper"}
 end
 
 def install_doom

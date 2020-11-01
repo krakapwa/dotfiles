@@ -1,0 +1,6 @@
+gnome.gtk.theme:          dracula
+gnome.wm.theme:           gtk_theme
+gnome.icon.theme:         Paper
+gnome.wallpaper:          "/home/laurent/.wallpapers/dracula.png"
+gnome.terminal.font:      typeface_gnome_terminal
+gnome.terminal.scrollbar: theme_terminal_scrollbar
