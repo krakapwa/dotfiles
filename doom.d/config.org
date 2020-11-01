@@ -14,6 +14,10 @@
 * Appearance
 #+begin_src emacs-lisp :tangle yes
 (setq doom-theme 'doom-dracula)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono Regular" :size 12 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Medium") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font Medium" :size 12)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono Regular" :size 19))
 #+end_src
 * LaTeX
 #+begin_src emacs-lisp :tangle yes

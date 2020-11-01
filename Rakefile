@@ -8,7 +8,7 @@ IGNORE = %w[
 ].freeze
 desc "install the dot files into user's home directory"
 task :test do
-  install_packages
+  install_fonts
 end
 
 task :install do
@@ -163,18 +163,17 @@ def install_vim
 end
 
 def install_fonts
-  print "install powerline fonts? [ynq] "
+  print "install fonts? [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      puts "installing powerline fonts"
-      if(Dir.exist?('fonts'))
-        puts 'fonts directory already exists'
-      else
-        system %Q{git clone https://github.com/powerline/fonts.git --depth=1}
-      end
-      system %Q{cd fonts && sh install.sh}
+      puts "installing nerd fonts"
+      system %Q{mkdir fonts}
+      system %Q{wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip}
+      system %Q{mv JetBrainsMono.zip fonts/}
+      system %Q{cd fonts && unzip JetBrainsMono.zip}
+      system %Q{fc-cache -fv}
     when 'q'
-      puts "skipping powerline fonts"
+      puts "skipping fonts"
       exit
     end
 end
