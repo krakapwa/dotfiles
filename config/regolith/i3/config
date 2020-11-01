@@ -72,7 +72,7 @@ set_from_resource $ws19 i3-wm.workspace.19.name "19"
 ###############################################################################
 
 ## Launch // Terminal // <> Enter ##
-bindsym $alt+t exec /usr/bin/x-terminal-emulator
+bindsym $alt+t exec /usr/bin/xfce4-terminal
 
 ## Launch // Browser // <><Shift> Enter ##
 bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)

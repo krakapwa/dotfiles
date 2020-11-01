@@ -1,38 +1,31 @@
-<monitors version="1">
+<monitors version="2">
   <configuration>
-      <clone>no</clone>
-      <output name="eDP1">
-          <vendor>CMN</vendor>
-          <product>0x14b1</product>
-          <serial>0x00000000</serial>
-      </output>
-      <output name="DP1">
-      </output>
-      <output name="DP2">
-      </output>
-      <output name="DP2-1">
-      </output>
-      <output name="DP2-2">
+    <migrated/>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP2-2</connector>
           <vendor>APP</vendor>
           <product>0x921c</product>
           <serial>0x020197f0</serial>
+        </monitorspec>
+        <mode>
           <width>1920</width>
           <height>1200</height>
           <rate>60</rate>
-          <x>0</x>
-          <y>0</y>
-          <rotation>normal</rotation>
-          <reflect_x>no</reflect_x>
-          <reflect_y>no</reflect_y>
-          <primary>yes</primary>
-      </output>
-      <output name="DP2-3">
-      </output>
-      <output name="HDMI1">
-      </output>
-      <output name="HDMI2">
-      </output>
-      <output name="VIRTUAL1">
-      </output>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <disabled>
+      <monitorspec>
+        <connector>eDP1</connector>
+        <vendor>CMN</vendor>
+        <product>0x14b1</product>
+        <serial>0x00000000</serial>
+      </monitorspec>
+    </disabled>
   </configuration>
 </monitors>
