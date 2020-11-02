@@ -8,6 +8,10 @@
       :desc "Switch window" "TAB" #'ace-window)
 
 (setq doom-theme 'doom-dracula)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 16)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 19))
 
 (map! :localleader
       :map LaTeX-mode-map
