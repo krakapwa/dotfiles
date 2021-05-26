@@ -94,7 +94,6 @@ plugins=(
     git
     vi-mode
     pip
-    emacs
     colored-man-pages
     command-not-found
     extract
@@ -172,3 +171,9 @@ unset __conda_setup
 conda activate my
 # <<< conda initialize <<<
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/laurent/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/laurent/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/laurent/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/laurent/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

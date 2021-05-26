@@ -47,8 +47,8 @@ task :install do
   switch_to_zsh
   x_screen_tearing_fix
   install_fonts
-  init_emacsd_service
   install_doom
+  init_systemd_services
   install_regolith
 end
 
@@ -72,6 +72,9 @@ end
 def install_packages
   packages = %w{
         emacs gconf2 dconf-cli uuid-runtime xfce4-terminal ripgrep
+ git tmux sshfs ranger lsyncd telegram-desktop
+ evolution regolith-look-dracula
+aspell-fr zathura
       }
       sh "sudo apt-get install #{packages * ' '}"
 end
@@ -163,14 +166,19 @@ def install_vim
 end
 
 def install_fonts
+  fonts = ['JetBrainsMono', 'Iosevka']
   print "install fonts? [ynq] "
     case $stdin.gets.chomp
     when 'y'
       puts "installing nerd fonts"
       system %Q{mkdir fonts}
-      system %Q{wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip}
-      system %Q{mv JetBrainsMono.zip fonts/}
-      system %Q{cd fonts && unzip JetBrainsMono.zip}
+      fonts.each
+      fonts.each { |item|
+          puts item
+          system %Q{wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/#{item}.zip}
+          system %Q{mv #{item}.zip fonts/}
+          system %Q{cd fonts && unzip #{item}.zip}
+      }
       system %Q{fc-cache -fv}
     when 'q'
       puts "skipping fonts"
@@ -214,13 +222,24 @@ def copy_swapescape
     end
 end
 
-def init_emacsd_service
+def init_systemd_services
   print "enable emacs daemon service? [ynq] "
     case $stdin.gets.chomp
     when 'y'
       puts "enabling/starting emacs daemon"
       system %Q{systemctl --user enable emacs}
       system %Q{systemctl --user start emacs}
+    when 'q'
+      puts "skipping"
+      exit
+    end
+
+  print "enable lsyncd daemon service? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "enabling/starting emacs daemon"
+      system %Q{systemctl --user enable lsyncd}
+      system %Q{systemctl --user start lsyncd}
     when 'q'
       puts "skipping"
       exit

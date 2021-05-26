@@ -54,3 +54,4 @@
 (package! ivy-bibtex)
 (package! org-ref)
 (package! py-yapf)
+(package! typopunct)

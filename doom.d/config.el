@@ -7,11 +7,79 @@
       :desc "Previous buffer" "j" #'iflipb-previous-buffer
       :desc "Switch window" "TAB" #'ace-window)
 
-(setq doom-theme 'doom-dracula)
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 16)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 19))
+(after! ranger
+    (setq ranger-override-dired 'ranger)
+    (setq ranger-override-dired-mode t))
+
+(defface ispell-alpha-num-choice-face
+  '((t (:background "black" :foreground "red")))
+  "Face for `ispell-alpha-num-choice-face`."
+  :group 'ispell)
+
+(defface ispell-text-choice-face
+  '((t (:background "black" :foreground "forestgreen")))
+  "Face for `ispell-text-choice-face`."
+  :group 'ispell)
+
+(defun my-ispell-change-dictionaries ()
+"Switch between language dictionaries."
+(interactive)
+  (let ((choice (read-char-exclusive (concat
+          "["
+          (propertize "E" 'face 'ispell-alpha-num-choice-face)
+          "]"
+          (propertize "nglish" 'face 'ispell-text-choice-face)
+          " | ["
+          (propertize "F" 'face 'ispell-alpha-num-choice-face)
+          "]"
+          (propertize "rench" 'face 'ispell-text-choice-face)))))
+    (cond
+      ((eq choice ?E)
+        (setq flyspell-default-dictionary "english")
+        (setq ispell-dictionary "english")
+        (setq ispell-personal-dictionary "/home/laurent/aspell.en.pws")
+        (ispell-kill-ispell)
+        (message "English"))
+      ((eq choice ?F)
+        (setq flyspell-default-dictionary "french")
+        (setq ispell-dictionary "french")
+        (setq ispell-personal-dictionary "/home/laurent/aspell.fr.pws")
+        (ispell-kill-ispell)
+        (message "French"))
+      (t (message "No changes have been made."))) ))
+
+(defvar compilation-buffer-visible nil)
+
+(defun toggle-compilation-visible ()
+  (interactive)
+  (setq compilation-buffer-visible (not compilation-buffer-visible))
+  (message "Compilation buffer %s"
+           (if compilation-buffer-visible "visible" "not visible")))
+
+(defun notify-compilation-result(buffer msg)
+  (with-current-buffer buffer
+    (progn
+      (cond
+       ((and (string-match "^finished" msg) (string= "*compilation*" (buffer-name)))
+        (progn
+          (unless compilation-buffer-visible (delete-windows-on buffer))
+          ))
+       ((string= "*compilation*" (buffer-name))
+        (progn
+          ;; you can add a custom message here, like (buffer-contents, but I like the default ones from
+          ;; compilation-mode
+          ;;
+          ;; (message "Compilation failed: %s" (buffer-substring () ()))
+          ))
+       )
+      (setq current-frame (car (car (cdr (current-frame-configuration)))))
+      (raise-frame current-frame))))
+
+(add-to-list 'compilation-finish-functions 'notify-compilation-result)
+
+(setq doom-theme 'doom-nord)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 16))
+(setq doom-big-font-increment 2)
 
 (map! :localleader
       :map LaTeX-mode-map
@@ -19,9 +87,44 @@
 (setq TeX-parse-self t) ; Enable parse on load.
 (setq TeX-auto-save t) ; Enable parse on save.
 
+(require 'ox-extra)
+(add-to-list 'org-latex-classes
+             '("TMI"
+               "\\documentclass[journal, web, twoside]{ieeecolor}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(setq TeX-view-program-list
+      '(("zathura"
+	 ("zathura" (mode-io-correlate "-sync.sh")
+	  " "
+	  (mode-io-correlate "%n:1:%t ")
+	  "%o"))))
+
+(use-package! typopunct
+  :config
+  (typopunct-change-language 'french t))
+
 (use-package! iflipb
 :config
     (setq iflipb-ignore-buffers '("(?!(\*Python\*))(^[*])")))
+
+(setq langtool-language-tool-jar "/home/laurent/bin/LanguageTool-5.2/languagetool-commandline.jar")
+
+(defun langtool-autoshow-detail-popup (overlays)
+  (when (require 'popup nil t)
+    ;; Do not interrupt current popup
+    (unless (or popup-instances
+                ;; suppress popup after type `C-g` .
+                (memq last-command '(keyboard-quit)))
+      (let ((msg (langtool-details-error-message overlays)))
+        (popup-tip msg)))))
+
+(setq langtool-autoshow-message-function
+      'langtool-autoshow-detail-popup)
 
 (use-package! yaml-mode
   :ensure t
@@ -63,10 +166,10 @@
 (use-package! org-ref
     :init
         (setq org-latex-pdf-process
-            '("pdflatex -interaction nonstopmode -output-directory %o %f"
+            '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
             "bibtex %b"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"
-            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+            "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
         (setq org-ref-bibliography-notes "~/Documents/paper-notes/paper-notes.org"
             org-ref-default-bibliography "~/Documents/paper-notes/refs.bib"
             bibtex-completion-bibliography org-ref-default-bibliography
@@ -85,23 +188,58 @@
   (require 'ox-extra)
   (ox-extras-activate '(ignore-headlines)))
 
+(defmacro by-backend (&rest body)
+  `(case (if (boundp 'backend) (org-export-backend-name backend) nil) ,@body))
+
+(setq org-export-allow-bind-keywords t)
+(setq org-export-in-background nil)
+
+
+
 (add-to-list 'org-latex-classes
-               '("koma-article" "\\documentclass{scrartcl}"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+             '("koma-article" "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 (add-to-list 'org-latex-classes
- '("elsarticle"
- "\\documentclass{elsarticle}
- [NO-DEFAULT-PACKAGES]
- [PACKAGES]
- [EXTRA]"
- ("\\section{%s}" . "\\section*{%s}")
- ("\\subsection{%s}" . "\\subsection*{%s}")
- ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
- ("\\paragraph{%s}" . "\\paragraph*{%s}")
- ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+             '("koma-article-fr" "\\documentclass[french]{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+             '("memoir-fr"
+               "\\documentclass[a4paper,11pt,titlepage, twoside]{memoir}
+                \\usepackage[utf8]{inputenc}
+                \\usepackage[T1]{fontenc}
+                \\usepackage{fixltx2e}
+                \\usepackage{hyperref}
+                \\usepackage{mathpazo}
+                \\usepackage{color}
+                \\usepackage{enumerate}
+                \\definecolor{bg}{rgb}{0.95,0.95,0.95}
+                \\tolerance=1000
+                \\linespread{1.1}
+                \\hypersetup{pdfborder=0 0 0}"
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 (add-to-list 'org-file-apps '("\\.pdf\\'" . "zathura %s"))
-;; (setq org-export-in-background t)
+
+(setq fr-quotes '("fr"
+                  (primary-opening :utf-8 "« " :html "&laquo;&nbsp;" :latex "\\enquote{" :texinfo "@guillemetleft{}@tie{}")
+                  (primary-closing :utf-8 " »" :html "&nbsp;&raquo;" :latex "}" :texinfo "@tie{}@guillemetright{}")
+                  (secondary-opening :utf-8 "« " :html "&laquo;&nbsp;" :latex "\\\enquote{" :texinfo "@guillemetleft{}@tie{}")
+                  (secondary-closing :utf-8 " »" :html "&nbsp;&raquo;" :latex "\\}" :texinfo "@tie{}@guillemetright{}")
+                  (apostrophe :utf-8 "’" :html "&rsquo;")))
+
+(add-to-list 'org-export-smart-quotes-alist fr-quotes)

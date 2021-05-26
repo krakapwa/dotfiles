@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: alt_title
+# key: alttitle
+# --
+
+  :PROPERTIES:
+  :ALT_TITLE: ${1}
+  :END:

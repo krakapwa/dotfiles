@@ -1,11 +1,11 @@
 i3-wm.mod: Mod4
 i3-wm.alt: Mod1
 i3xrocks.date.format2: + %a %d/%m %H:%M
-! -- Styles - Colors
-#define gtk_theme Dracula
-#define icon_them Paper
-#include "/home/laurent/.config/regolith/styles/dracula/root"
 
-Xcursor.theme: Paper
+! -- Styles - Colors
+#define icon_them Paper
+#include "/etc/regolith/styles/nord/root"
+
 i3-wm.gaps.inner.size: 15
 i3-wm.gaps.outer.size: 0
+i3-wm.border.size: 40
